@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
-    "types": ["node", "vite/client"],
+    "types": ["node"],
     "target": "esnext",
     "module": "esnext",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable", "esnext"],
     "skipLibCheck": true,
     "baseUrl": ".",
-
 
     /* Aliases */
     "paths": {
@@ -31,12 +30,12 @@
     "allowSyntheticDefaultImports": true
   },
   "include": [
-    "src",
     "./src/**/*.tsx",
     "./src/**/*.ts",
     "./src/app/types/global.d.ts",
     "./.eslintrc.cjs",
   ],
+
   "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
