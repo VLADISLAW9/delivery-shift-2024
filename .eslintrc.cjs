@@ -7,7 +7,7 @@ module.exports = {
     ...eslint.react.overrides,
     {
       extends: ['plugin:@tanstack/eslint-plugin-query/recommended'],
-      files: ['**/src/**/.{ts,tsx}'],
+      files: ['**/*.{ts,tsx}'],
       settings: {
         atomPostfix: ''
       },

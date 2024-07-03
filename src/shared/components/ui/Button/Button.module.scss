@@ -64,14 +64,14 @@
 }
 
 .default_text {
-  color: #344051;
+  color: var(--text-secondary-color);
 
   &:hover {
-    background: #f9fafb;
+    background: var(--bg-tertiary);
   }
 
   &:disabled {
-    color: #637083;
+    color: var(--text-tertiary-color);
   }
 }
 
@@ -81,11 +81,11 @@
   padding: 0;
   border: none;
   background: none;
-  color: #344051;
+  color: var(--text-secondary-color);
   float: left;
 
   &:disabled:not(.loading) {
-    color: #637083;
+    color: var(--text-tertiary-color);
   }
 }
 

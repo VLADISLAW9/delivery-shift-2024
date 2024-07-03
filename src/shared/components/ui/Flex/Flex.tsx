@@ -46,7 +46,7 @@ export interface FlexProps extends DivProps {
   direction: FlexDirection;
   wrap?: FlexWrap;
   gap?: FlexGap;
-  max?: boolean;
+  fullWidth?: boolean;
 }
 
 export const Flex = (props: FlexProps) => {
@@ -58,8 +58,7 @@ export const Flex = (props: FlexProps) => {
     direction = 'row',
     wrap = 'nowrap',
     gap,
-    max,
-    ...otherProps
+    fullWidth
   } = props;
 
   const classes = [
@@ -71,12 +70,12 @@ export const Flex = (props: FlexProps) => {
     gap && gapClasses[gap]
   ];
 
-  const mods: Mods = {
-    [cls.max]: max
+  const FlexStyleModifiers: StyleModifiers = {
+    [cls.full_width]: fullWidth
   };
 
   return (
-    <div className={clsx(cls.flex, mods, classes)} {...otherProps}>
+    <div className={clsx(cls.flex, FlexStyleModifiers, classes)} {...props}>
       {children}
     </div>
   );
