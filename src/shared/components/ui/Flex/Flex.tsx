@@ -49,18 +49,17 @@ export interface FlexProps extends DivProps {
   fullWidth?: boolean;
 }
 
-export const Flex = (props: FlexProps) => {
-  const {
-    className,
-    children,
-    justify = 'start',
-    align = 'center',
-    direction = 'row',
-    wrap = 'nowrap',
-    gap,
-    fullWidth
-  } = props;
-
+export const Flex = ({
+  className,
+  children,
+  justify = 'start',
+  align = 'center',
+  direction = 'row',
+  wrap = 'nowrap',
+  gap,
+  fullWidth,
+  ...props
+}: FlexProps) => {
   const classes = [
     className,
     justifyClasses[justify],

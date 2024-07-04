@@ -11,7 +11,12 @@
     /* Aliases */
     "paths": {
       "@/*": ["src/*"],
-      "@ui/*": ["src/shared/components/ui/*"]
+      "@ui/*": ["src/shared/components/ui/*"],
+      "@images/*": ["src/shared/assets/images/*"],
+      "@components/*": ["src/shared/components/*"],
+      "@consts/*": ["src/shared/consts/*"],
+      "@appTypes/*": ["src/shared/types/*"],
+      "@pages/*": ["src/pages/*"],
     },
 
     /* Bundler mode */
@@ -29,7 +34,7 @@
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["./src/**/*.tsx", "./src/**/*.ts", "./src/app/types/global.d.ts", "./.eslintrc.cjs"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/app/types/global.d.ts", "./.eslintrc.cjs"],
 
   "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]

@@ -1,0 +1,175 @@
+:root {
+  --font-family-main: consolas, 'Inter', serif;
+}
+
+.typography32_regular {
+  font-family: var(--font-family-main);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 36px;
+}
+
+.typography32_medium {
+  font-family: var(--font-family-main);
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 36px;
+}
+
+.typography32_semibold {
+  font-family: var(--font-family-main);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 36px;
+}
+
+.typography32_bold {
+  font-family: var(--font-family-main);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.typography24_regular {
+  font-family: var(--font-family-main);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.typography20_regular {
+  font-family: var(--font-family-main);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.typography16_regular {
+  font-family: var(--font-family-main);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.typography14_regular {
+  font-family: var(--font-family-main);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.typography12_regular {
+  font-family: var(--font-family-main);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.typography24_medium {
+  font-family: var(--font-family-main);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.typography20_medium {
+  font-family: var(--font-family-main);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.typography16_medium {
+  font-family: var(--font-family-main);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.typography14_medium {
+  font-family: var(--font-family-main);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.typography12_medium {
+  font-family: var(--font-family-main);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.typography24_semibold {
+  font-family: var(--font-family-main);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.typography20_semibold {
+  font-family: var(--font-family-main);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.typography16_semibold {
+  font-family: var(--font-family-main);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.typography14_semibold {
+  font-family: var(--font-family-main);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.typography12_semibold {
+  font-family: var(--font-family-main);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.typography24_bold {
+  font-family: var(--font-family-main);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.typography20_bold {
+  font-family: var(--font-family-main);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.typography16_bold {
+  font-family: var(--font-family-main);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.typography14_bold {
+  font-family: var(--font-family-main);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.typography12_bold {
+  font-family: var(--font-family-main);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.clickable {
+  cursor: pointer;
+}

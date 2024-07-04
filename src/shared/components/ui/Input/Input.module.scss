@@ -1,0 +1,44 @@
+.input {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--text-quartenery-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary-color);
+  outline: none;
+  transition: all 0.2s ease-out;
+
+  &:focus {
+    border: 1px solid var(--indicator-focused-color);
+  }
+
+  &:hover {
+    border: 1px solid var(--border-light-color);
+  }
+
+  &::placeholder {
+    color: var(--text-tertiary-color);
+  }
+
+  &:disabled {
+    background: var(--bg-disabled);
+    color: var(--text-tertiary-color);
+  }
+}
+
+.error {
+  & input {
+    border: 1px solid;
+    border-color: var(--indicator-error-color);
+  }
+
+  & p {
+    color: var(--indicator-error-color);
+  }
+}
+
+.hint_message {
+  color: var(--text-tertiary-color);
+}

@@ -1,0 +1,15 @@
+.desktop_header {
+  width: 100%;
+  max-width: 1440px;
+  padding: 24px 0;
+  margin: 0 auto;
+
+  .navbar {
+    flex: 1;
+  }
+
+  .app_logo {
+    width: 120px;
+    cursor: pointer;
+  }
+}
