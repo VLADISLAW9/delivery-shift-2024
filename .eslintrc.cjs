@@ -13,6 +13,13 @@ module.exports = {
       },
       parserOptions: {
         tsconfigRootDir: __dirname
+      },
+      rules: {
+        '@typescript-eslint/no-floating-promises': 'off',
+        '@typescript-eslint/no-unsafe-argument': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
+        "@typescript-eslint/no-misused-promises": 'off'
       }
     }
   ]

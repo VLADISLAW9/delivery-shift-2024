@@ -17,6 +17,7 @@
       "@consts/*": ["src/shared/consts/*"],
       "@appTypes/*": ["src/shared/types/*"],
       "@pages/*": ["src/pages/*"],
+      "@hooks/*": ["src/shared/hooks/*"],
     },
 
     /* Bundler mode */
