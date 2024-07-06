@@ -1,0 +1,62 @@
+:root {
+  // font family
+  --font-family-main: consolas, 'Inter', serif;
+
+  // font weights
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+
+  // font sizes
+  --font-size-32: 32px;
+  --font-size-24: 24px;
+  --font-size-20: 20px;
+  --font-size-16: 16px;
+  --font-size-14: 14px;
+  --font-size-12: 12px;
+
+  // line heights
+  --font-line-36: 36px;
+  --font-line-32: 32px;
+  --font-line-24: 32px;
+  --font-line-20: 24px;
+  --font-line-16: 26px;
+  --font-line-12: 20px;
+
+  // typography32
+  --font-32-regular: var(--font-weight-regular) var(--font-size-32) / var(--font-line-36) var(--font-family-main);
+  --font-32-medium: var(--font-weight-medium) var(--font-size-32) / var(--font-line-36) var(--font-family-main);
+  --font-32-semi-bold: var(--font-weight-semi-bold) var(--font-size-32) / var(--font-line-36) var(--font-family-main);
+  --font-32-bold: var(--font-weight-bold) var(--font-size-32) / var(--font-line-32) var(--font-family-main);
+
+  // typography24
+  --font-24-regular: var(--font-weight-regular) var(--font-size-24) / var(--font-line-32) var(--font-family-main);
+  --font-24-medium: var(--font-weight-medium) var(--font-size-24) / var(--font-line-32) var(--font-family-main);
+  --font-24-semi-bold: var(--font-weight-semi-bold) var(--font-size-24) / var(--font-line-32) var(--font-family-main);
+  --font-24-bold: var(--font-weight-bold) var(--font-size-24) / var(--font-line-32) var(--font-family-main);
+
+  // typography20
+  --font-20-regular: var(--font-weight-regular) var(--font-size-20) / var(--font-line-24) var(--font-family-main);
+  --font-20-medium: var(--font-weight-medium) var(--font-size-20) / var(--font-line-24) var(--font-family-main);
+  --font-20-semi-bold: var(--font-weight-semi-bold) var(--font-size-20) / var(--font-line-24) var(--font-family-main);
+  --font-20-bold: var(--font-weight-bold) var(--font-size-20) / var(--font-line-24) var(--font-family-main);
+
+  // typography16
+  --font-16-regular: var(--font-weight-regular) var(--font-size-16) / var(--font-line-24) var(--font-family-main);
+  --font-16-medium: var(--font-weight-medium) var(--font-size-16) / var(--font-line-24) var(--font-family-main);
+  --font-16-semi-bold: var(--font-weight-semi-bold) var(--font-size-16) / var(--font-line-24) var(--font-family-main);
+  --font-16-bold: var(--font-weight-bold) var(--font-size-16) / var(--font-line-24) var(--font-family-main);
+
+  // typography16
+  --font-14-regular: var(--font-weight-regular) var(--font-size-14) / var(--font-line-20) var(--font-family-main);
+  --font-14-medium: var(--font-weight-medium) var(--font-size-14) / var(--font-line-20) var(--font-family-main);
+  --font-14-semi-bold: var(--font-weight-semi-bold) var(--font-size-14) / var(--font-line-20) var(--font-family-main);
+  --font-14-bold: var(--font-weight-bold) var(--font-size-14) / var(--font-line-20) var(--font-family-main);
+
+  // typography32
+  --font-12-regular: var(--font-weight-regular) var(--font-size-12) / var(--font-line-16) var(--font-family-main);
+  --font-12-medium: var(--font-weight-medium) var(--font-size-12) / var(--font-line-16) var(--font-family-main);
+  --font-12-semi-bold: var(--font-weight-semi-bold) var(--font-size-12) / var(--font-line-16) var(--font-family-main);
+  --font-12-bold: var(--font-weight-bold) var(--font-size-12) / var(--font-line-16) var(--font-family-main);
+}

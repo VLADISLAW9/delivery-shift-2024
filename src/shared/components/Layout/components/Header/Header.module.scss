@@ -1,0 +1,21 @@
+.desktop_header {
+  display: flex;
+  width: 100%;
+  max-width: 1440px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+  margin: 0 auto;
+  gap: 32px;
+
+  .navbar {
+    display: flex;
+    flex: 1;
+    gap: 16px;
+  }
+
+  .app_logo {
+    width: 120px;
+    cursor: pointer;
+  }
+}

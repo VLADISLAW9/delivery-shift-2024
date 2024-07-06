@@ -10,33 +10,33 @@
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
-    "prettier": "npx prettier --write **/*.{ts,tsx,json,cjs}",
     "preview": "vite preview",
     "prepare": "husky"
   },
+  "lint-staged": {
+    "*.scss": [
+      "stylelint --fix"
+    ],
+    "*.{ts, tsx}": [
+      "prettier --write",
+      "eslint --no-error-on-unmatched-pattern --fix"
+    ]
+  },
   "dependencies": {
     "@hookform/resolvers": "^3.6.0",
-    "@tanstack/react-query": "^5.49.2",
+    "@tanstack/react-query": "^5.50.1",
     "axios": "^1.7.2",
     "clsx": "^2.1.1",
     "libphonenumber-js": "^1.11.4",
     "moment": "^2.30.1",
     "react": "^18.3.1",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.1",
     "react-number-format": "^5.4.0",
     "react-router-dom": "^6.24.0",
     "zod": "^3.23.8",
     "zustand": "^4.5.4"
-  },
-  "lint-staged": {
-    "*.scss": [
-      "lint:scss:fix"
-    ],
-    "*.{ts, tsx}": [
-      "prettier",
-      "lint:ts:fix"
-    ]
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.49.1",
