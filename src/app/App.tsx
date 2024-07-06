@@ -3,7 +3,7 @@ import { Layout } from '@components/Layout';
 
 export const App = () => (
   <div id='app' className='app'>
-    <Suspense fallback='Загрузка...'>
+    <Suspense fallback='Загрузка1...'>
       <Layout />
     </Suspense>
   </div>
