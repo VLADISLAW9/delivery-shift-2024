@@ -1,7 +1,6 @@
 import { getRouteAuth, getRouteMain } from '@consts/router.ts';
 import { AppLogo } from '@ui/AppLogo';
 import { Button } from '@ui/Button';
-import { Flex } from '@ui/Flex';
 import { Link } from '@ui/Link';
 import { Typography } from '@ui/Typography';
 
@@ -23,20 +22,20 @@ export const Header = ({ isMobile }: HeaderProps) => {
   }
 
   return (
-    <Flex direction='row' justify='between' align='center' gap='32' className={cls.desktop_header}>
+    <div className={cls.desktop_header}>
       <Link to={getRouteMain()}>
         <AppLogo className={cls.app_logo} />
       </Link>
       {isLoggedIn ? (
         <>
-          <Flex direction='row' gap='32' className={cls.navbar}>
+          <div className={cls.navbar}>
             <Link to='/'>
               <Typography variant='typography16_medium'>Профиль</Typography>
             </Link>
             <Link to='/'>
               <Typography variant='typography16_medium'>История</Typography>
             </Link>
-          </Flex>
+          </div>
           <Button onClick={onLogout} variant='clear'>
             <Typography variant='typography16_medium'>Выйти</Typography>
           </Button>
@@ -46,6 +45,6 @@ export const Header = ({ isMobile }: HeaderProps) => {
           <Typography variant='typography16_medium'>Войти</Typography>
         </Link>
       )}
-    </Flex>
+    </div>
   );
 };

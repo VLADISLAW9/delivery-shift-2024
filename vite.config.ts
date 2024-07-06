@@ -13,12 +13,12 @@ export default defineConfig({
       include: '**/*.svg'
     })
   ],
-  publicDir: path.resolve(__dirname, './src/shared/assets'),
+  publicDir: path.resolve(__dirname, 'assets'),
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
       '@ui': path.resolve(__dirname, './src/shared/components/ui'),
-      '@images': path.resolve(__dirname, './src/shared/assets/images'),
+      '@images': path.resolve(__dirname, './assets/images'),
       '@components': path.resolve(__dirname, './src/shared/components'),
       '@consts': path.resolve(__dirname, './src/shared/consts'),
       '@appTypes': path.resolve(__dirname, './src/shared/types'),

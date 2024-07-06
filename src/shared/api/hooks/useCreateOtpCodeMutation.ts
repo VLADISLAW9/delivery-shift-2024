@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 
-import { otp } from '@/shared/api/requests/auth';
+import { createOtp } from '@/shared/api/requests/auth';
 
 interface CreateOtpParams {
   phone: string;
@@ -9,7 +9,5 @@ interface CreateOtpParams {
 export const useCreateOtpMutation = () =>
   useMutation({
     mutationKey: ['createOtp'],
-    mutationFn: (params: CreateOtpParams) => {
-      return otp({ params });
-    }
+    mutationFn: (params: CreateOtpParams) => createOtp({ params })
   });

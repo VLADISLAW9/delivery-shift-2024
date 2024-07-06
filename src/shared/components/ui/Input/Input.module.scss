@@ -1,3 +1,9 @@
+.input_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .input {
   display: flex;
   width: 100%;
@@ -28,7 +34,8 @@
   }
 }
 
-.error {
+.input_wrapper_error {
+
   & input {
     border: 1px solid;
     border-color: var(--indicator-error-color);
@@ -41,4 +48,8 @@
 
 .hint_message {
   color: var(--text-tertiary-color);
+}
+
+.label, .error_message {
+  font: var(--font-16-regular);
 }

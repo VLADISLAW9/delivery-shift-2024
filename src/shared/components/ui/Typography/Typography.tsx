@@ -45,17 +45,14 @@ export const Typography = <Tag extends TypographyTag = 'div'>({
   variant,
   tag = 'div',
   children,
+  clickable,
   className,
   ...props
 }: TypographyProps<Tag>) => {
   const Component = tag;
 
-  const TypographyStyleModifiers: StyleModifiers = {
-    [cls.clickable]: props.clickable
-  };
-
   return (
-    <Component className={clsx(cls[variant], TypographyStyleModifiers, [className])} {...props}>
+    <Component className={clsx(cls[variant], clickable && cls.clickable, className)} {...props}>
       {children}
     </Component>
   );

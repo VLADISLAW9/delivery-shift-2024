@@ -1,5 +1,6 @@
 @import "reset";
-@import "colors";
+@import "variables/colors";
+@import "variables/typography";
 
 .app {
   min-height: 100vh;

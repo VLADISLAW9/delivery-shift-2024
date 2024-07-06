@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { USER_LOCALSTORAGE_KEY } from '../consts/localstorage';
+import { AUTH_KEY } from '../consts/localstorage';
 
 const API_URL = import.meta.env.VITE_API_URL as string;
 
@@ -11,7 +11,7 @@ export const api = axios.create({
 
 api.interceptors.request.use((config) => {
   if (config.headers) {
-    config.headers.Authorization = `Bearer ${localStorage.getItem(USER_LOCALSTORAGE_KEY)}`;
+    config.headers.Authorization = `Bearer ${localStorage.getItem(AUTH_KEY)}`;
   }
   return config;
 });

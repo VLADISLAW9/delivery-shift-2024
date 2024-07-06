@@ -8,17 +8,14 @@ import cls from './Link.module.scss';
 interface LinkProps extends ReactRouterDomLinkProps {
   className?: string;
   children?: ReactNode;
-  activeClassName?: string;
 }
 
-export const Link = ({ className, to, children, activeClassName = '', ...props }: LinkProps) => {
-  return (
-    <NavLink
-      to={to}
-      className={({ isActive }) => clsx(cls.link, className, { [activeClassName]: isActive })}
-      {...props}
-    >
-      {children}
-    </NavLink>
-  );
-};
+export const Link = ({ className, to, children, ...props }: LinkProps) => (
+  <NavLink
+    to={to}
+    className={({ isActive }) => clsx(cls.link, isActive && cls.active, className)}
+    {...props}
+  >
+    {children}
+  </NavLink>
+);

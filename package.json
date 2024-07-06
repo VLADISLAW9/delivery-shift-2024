@@ -10,9 +10,17 @@
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
-    "prettier": "npx prettier --write **/*.{ts,tsx,json,cjs}",
     "preview": "vite preview",
     "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.scss": [
+      "stylelint --fix"
+    ],
+    "*.{ts, tsx}": [
+      "prettier --write",
+      "eslint --no-error-on-unmatched-pattern --fix"
+    ]
   },
   "dependencies": {
     "@hookform/resolvers": "^3.6.0",
@@ -29,15 +37,6 @@
     "react-router-dom": "^6.24.0",
     "zod": "^3.23.8",
     "zustand": "^4.5.4"
-  },
-  "lint-staged": {
-    "*.scss": [
-      "lint:scss:fix"
-    ],
-    "*.{ts, tsx}": [
-      "prettier",
-      "lint:ts:fix"
-    ]
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.49.1",

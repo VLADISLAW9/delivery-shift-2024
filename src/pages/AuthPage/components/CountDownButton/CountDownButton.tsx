@@ -13,8 +13,12 @@ interface CountDownButtonProps {
   endTime: number;
 }
 
-export const CountDownButton = (props: CountDownButtonProps) => {
-  const { className, onRetrySendOtpCode, endTime, loading } = props;
+export const CountDownButton = ({
+  loading,
+  onRetrySendOtpCode,
+  endTime,
+  className
+}: CountDownButtonProps) => {
   const [seconds, { startCountDown }] = useCountDown({
     countStart: Math.floor((endTime - Date.now()) / 1000),
     enabled: false,

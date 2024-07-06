@@ -3,11 +3,11 @@ import { api } from '../../instance.ts';
 export interface OtpParams {
   phone: string;
 }
-export type OtpConfig = AxiosRequestConfig<OtpParams>;
+export type CreateOtpConfig = AxiosRequestConfig<OtpParams>;
 
-interface OtpResponse extends Response {
+interface CreateOtpResponse extends Response {
   retryDelay: number;
 }
 
-export const otp = async ({ params, config }: OtpConfig) =>
-  api.post<OtpResponse>('/auth/otp', params, config);
+export const createOtp = async ({ params, config }: CreateOtpConfig) =>
+  api.post<CreateOtpResponse>('/auth/otp', params, config);

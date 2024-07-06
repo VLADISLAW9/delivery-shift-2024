@@ -1,5 +1,3 @@
-type StyleModifiers = Record<string, boolean | string | undefined>;
-
 declare module '*.{ts,tsx}' {
   import 'vite/client';
 }

@@ -1,18 +1,20 @@
-import type { ComponentProps, ForwardedRef, JSXElementConstructor, ReactElement } from 'react';
+import type {
+  ComponentProps,
+  ForwardedRef,
+  JSXElementConstructor,
+  ReactElement,
+  ReactNode
+} from 'react';
 import { forwardRef, useId } from 'react';
-import { JSX } from 'react/jsx-runtime';
+import type { JSX } from 'react/jsx-runtime';
 import clsx from 'clsx';
 
-import { Typography } from '../Typography';
-
 import cls from './Input.module.scss';
-import IntrinsicElements = JSX.IntrinsicElements;
-import { Flex } from '@ui/Flex';
 
 type InputProps<
   Component extends keyof JSX.IntrinsicElements | JSXElementConstructor<any> = 'input'
 > = {
-  label?: string;
+  label?: ReactNode;
   error?: string;
   component?: Component;
 } & ComponentProps<Component>;
@@ -25,28 +27,20 @@ export const Input = forwardRef(
     const internalId = useId();
     const id = externalId ?? internalId;
 
-    const Component = component || 'input';
-
-    const InputStyleModifiers: StyleModifiers = {
-      [cls.error]: !!error
-    };
+    const Component = component ?? 'input';
 
     return (
-      <Flex direction='column' gap='8' className={clsx(InputStyleModifiers)}>
+      <div className={clsx(cls.input_wrapper, { [cls.input_wrapper_error]: error })}>
         {label && (
-          <Typography variant='typography14_regular'>
+          <p className={cls.label}>
             {label} {required && '*'}
-          </Typography>
+          </p>
         )}
         <Component className={clsx(cls.input, className)} {...props} id={id} ref={ref} />
-        {error && (
-          <Typography tag='p' variant='typography14_regular'>
-            {error}
-          </Typography>
-        )}
-      </Flex>
+        {error && <p className={cls.error_message}>{error}</p>}
+      </div>
     );
   }
-) as <Component extends keyof IntrinsicElements | JSXElementConstructor<any> = 'input'>(
+) as <Component extends keyof JSX.IntrinsicElements | JSXElementConstructor<any> = 'input'>(
   props: InputProps<Component> & { ref?: ForwardedRef<HTMLInputElement> }
 ) => ReactElement;

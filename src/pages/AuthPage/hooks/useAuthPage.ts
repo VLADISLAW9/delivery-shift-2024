@@ -1,18 +1,17 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { USER_LOCALSTORAGE_KEY } from '@consts/localstorage.ts';
-import { getRouteMain } from '@consts/router.ts';
+import { AUTH_KEY } from '@consts/localstorage';
 import { zodResolver } from '@hookform/resolvers/zod';
-import type { OtpCodeSchema } from '@pages/AuthPage/consts/OtpCodeSchema.ts';
-import { otpCodeSchema } from '@pages/AuthPage/consts/OtpCodeSchema.ts';
-import type { PhoneSchema } from '@pages/AuthPage/consts/PhoneSchema.ts';
-import { phoneSchema } from '@pages/AuthPage/consts/PhoneSchema.ts';
 
-import { useCreateOtpMutation } from './useCreateOtpCodeMutation.ts';
-import { useSignInMutation } from './useSignInMutation.ts';
+import { useCreateOtpMutation, useSignInMutation } from '@/shared/api/hooks';
 
-export const useAuthForm = () => {
+import type { OtpCodeSchema } from '../consts/otpCodeSchema';
+import { otpCodeSchema } from '../consts/otpCodeSchema';
+import type { PhoneSchema } from '../consts/phoneSchema';
+import { phoneSchema } from '../consts/phoneSchema';
+
+export const useAuthPage = () => {
   const navigate = useNavigate();
 
   const createOtpMutation = useCreateOtpMutation();
@@ -22,10 +21,10 @@ export const useAuthForm = () => {
     [key: string]: number;
   }>({});
 
-  const [stage, setStage] = useState<'PHONE' | 'OTP'>('PHONE');
+  const [stage, setStage] = useState<'phone' | 'opt'>('phone');
 
   const form = useForm<OtpCodeSchema | PhoneSchema>({
-    resolver: zodResolver(stage === 'PHONE' ? phoneSchema : otpCodeSchema)
+    resolver: zodResolver(stage === 'phone' ? phoneSchema : otpCodeSchema)
   });
 
   const currentPhone = form.watch('phone');
@@ -52,30 +51,29 @@ export const useAuthForm = () => {
       return form.setError('otpCode', { message: signInResponse.data.reason });
     }
 
-    localStorage.setItem(USER_LOCALSTORAGE_KEY, signInResponse.data.token);
+    localStorage.setItem(AUTH_KEY, signInResponse.data.token);
 
-    navigate(getRouteMain());
+    navigate('/');
   };
 
   const onSubmit = form.handleSubmit((data: PhoneSchema | OtpCodeSchema) => {
-    console.log('fddslk;dj');
-
-    if (stage === 'PHONE') {
+    if (stage === 'phone') {
       handleCreateOtp(data as PhoneSchema);
     }
 
-    if (stage === 'OTP') {
+    if (stage === 'otp') {
       handleSignIn(data as OtpCodeSchema);
     }
   });
 
   return {
     form,
-    isSubmiting: createOtpMutation.isPending || signInMutation.isPending,
-    stage,
-    onSubmit,
-    handleCreateOtp,
-    currentPhone,
-    submittedPhones
+    state: {
+      isSubmiting: createOtpMutation.isPending || signInMutation.isPending,
+      stage,
+      currentPhone,
+      submittedPhones
+    },
+    functions: { onSubmit, handleCreateOtp }
   };
 };

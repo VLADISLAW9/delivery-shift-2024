@@ -10,7 +10,5 @@ interface SignInParams {
 export const useSignInMutation = () =>
   useMutation({
     mutationKey: ['signIn'],
-    mutationFn: (params: SignInParams) => {
-      return signIn({ params });
-    }
+    mutationFn: (params: SignInParams) => signIn({ params })
   });
