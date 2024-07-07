@@ -1,4 +1,4 @@
-import type { AppRoutesProps } from '@appTypes/appRoutesProps.ts';
+import type { AppRoutesProps } from '@appTypes/common/appRoutesProps.ts';
 import { AppRoutes, getRouteAuth, getRouteMain } from '@consts/router.ts';
 import { AuthPage } from '@pages/AuthPage';
 import { MainPage } from '@pages/MainPage';

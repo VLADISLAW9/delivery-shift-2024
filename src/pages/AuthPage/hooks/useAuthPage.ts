@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { AUTH_KEY } from '@consts/localstorage';
+import { AUTH_TOKEN } from '@consts/localstorage';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { useCreateOtpMutation, useSignInMutation } from '@/shared/api/hooks';
+import { useUserStore } from '@/shared/store';
 
 import type { OtpCodeSchema } from '../consts/otpCodeSchema';
 import { otpCodeSchema } from '../consts/otpCodeSchema';
@@ -13,6 +14,8 @@ import { phoneSchema } from '../consts/phoneSchema';
 
 export const useAuthPage = () => {
   const navigate = useNavigate();
+
+  const initUser = useUserStore.use.initUser();
 
   const createOtpMutation = useCreateOtpMutation();
   const signInMutation = useSignInMutation();
@@ -38,7 +41,7 @@ export const useAuthPage = () => {
       [phone]: Date.now() + createOtpCodeResponse.data.retryDelay
     });
 
-    setStage('OTP');
+    setStage('otp');
   };
 
   const handleSignIn = async (data: OtpCodeSchema) => {
@@ -51,7 +54,8 @@ export const useAuthPage = () => {
       return form.setError('otpCode', { message: signInResponse.data.reason });
     }
 
-    localStorage.setItem(AUTH_KEY, signInResponse.data.token);
+    localStorage.setItem(AUTH_TOKEN, signInResponse.data.token);
+    initUser(signInResponse.data.user);
 
     navigate('/');
   };

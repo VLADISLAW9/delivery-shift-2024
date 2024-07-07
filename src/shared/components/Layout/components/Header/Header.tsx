@@ -7,17 +7,17 @@ import { Typography } from '@ui/Typography';
 import cls from './Header.module.scss';
 
 interface HeaderProps {
-  isMobile?: boolean;
+  mobile?: boolean;
 }
 
-export const Header = ({ isMobile }: HeaderProps) => {
+export const Header = ({ mobile }: HeaderProps) => {
   const isLoggedIn = false;
 
   const onLogout = () => {
     console.log('logout');
   };
 
-  if (isMobile) {
+  if (mobile) {
     return null;
   }
 
