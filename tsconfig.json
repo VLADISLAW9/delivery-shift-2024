@@ -15,11 +15,14 @@
       "@/*": ["src/*"],
       "@ui/*": ["src/shared/components/ui/*"],
       "@images/*": ["assets/images/*"],
+      "@icons/*": ["assets/icons/*"],
       "@components/*": ["src/shared/components/*"],
       "@consts/*": ["src/shared/consts/*"],
       "@appTypes/*": ["src/shared/types/*"],
       "@pages/*": ["src/pages/*"],
       "@hooks/*": ["src/shared/hooks/*"],
+      "@api/*": ["src/shared/api/*"],
+      "@store/*": ["src/shared/store/*"],
     },
 
     /* Bundler mode */

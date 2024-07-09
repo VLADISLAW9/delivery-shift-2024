@@ -29,7 +29,9 @@ const AuthPage = () => {
               format='+7 ### ### ## ##'
               onChange={(event) => onChange(event.target.value.replace('+', '').replace(/ /g, ''))}
               placeholder='Телефон'
-              {...(fieldState.error && { error: fieldState.error.message })}
+              {...(fieldState.error && {
+                error: { error: true, message: fieldState.error.message }
+              })}
             />
           )}
         />
@@ -43,7 +45,9 @@ const AuthPage = () => {
                 component={PatternFormat}
                 format='######'
                 placeholder='Проверочный код'
-                {...(fieldState.error && { error: fieldState.error.message })}
+                {...(fieldState.error && {
+                  error: { error: true, message: fieldState.error.message }
+                })}
               />
             )}
           />

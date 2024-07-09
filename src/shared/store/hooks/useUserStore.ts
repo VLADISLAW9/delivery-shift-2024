@@ -1,7 +1,6 @@
 import type { User } from '@appTypes/user.ts';
-import { createStore } from 'zustand';
-
-import { createSelectors } from '../utils/createSelectors.ts';
+import { createSelectors } from '@store/utils/createSelectors.ts';
+import { create } from 'zustand';
 
 export interface UserState {
   user?: User;
@@ -15,11 +14,11 @@ export interface UserActions {
 }
 
 const initialState: UserState = {
-  user: undefined,
+  user: { id: 1 },
   isLoggedIn: false
 };
 
-const userStore = createStore<UserState & UserActions>((set) => ({
+export const useUserStoreBase = create((set) => ({
   ...initialState,
 
   initUser: (user) => {
@@ -28,7 +27,7 @@ const userStore = createStore<UserState & UserActions>((set) => ({
   },
 
   setUserData: (newUserData) => {
-    set(({ user }) => ({ user: { id: user?.id, ...newUserData } }));
+    set(({ user }) => ({ user: { id: user.id, ...newUserData } }));
   },
 
   clearUser: () => {
@@ -36,4 +35,4 @@ const userStore = createStore<UserState & UserActions>((set) => ({
   }
 }));
 
-export const useUserStore = createSelectors(userStore);
+export const useUserStore = createSelectors<UserState, UserActions>(useUserStoreBase);

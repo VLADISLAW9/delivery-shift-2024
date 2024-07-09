@@ -1,6 +1,7 @@
 import type { AppRoutesProps } from '@appTypes/common/appRoutesProps.ts';
-import { AppRoutes, getRouteAuth, getRouteMain } from '@consts/router.ts';
+import { AppRoutes, getRouteAuth, getRouteCreateOrder, getRouteMain } from '@consts/router';
 import { AuthPage } from '@pages/AuthPage';
+import { CreateOrderPage } from '@pages/CreateOrderPage';
 import { MainPage } from '@pages/MainPage';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
@@ -11,5 +12,9 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.MAIN]: {
     path: getRouteMain(),
     element: <MainPage />
+  },
+  [AppRoutes.CREATE_ORDER]: {
+    path: getRouteCreateOrder(),
+    element: <CreateOrderPage />
   }
 };

@@ -1,6 +1,7 @@
-import type { User } from '@appTypes/user.ts';
+import type { Response } from '@appTypes/common';
+import type { User } from '@appTypes/user';
 
-import { api } from '../../instance.ts';
+import { api } from '../../instance';
 
 interface SignInParams {
   phone: string;

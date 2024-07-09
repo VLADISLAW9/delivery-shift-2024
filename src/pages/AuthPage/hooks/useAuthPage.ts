@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { AUTH_TOKEN } from '@consts/localstorage';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useUserStore } from '@store/hooks/useUserStore.ts';
 
 import { useCreateOtpMutation, useSignInMutation } from '@/shared/api/hooks';
-import { useUserStore } from '@/shared/store';
 
 import type { OtpCodeSchema } from '../consts/otpCodeSchema';
 import { otpCodeSchema } from '../consts/otpCodeSchema';
@@ -15,7 +15,7 @@ import { phoneSchema } from '../consts/phoneSchema';
 export const useAuthPage = () => {
   const navigate = useNavigate();
 
-  const initUser = useUserStore.use.initUser();
+  const { initUser } = useUserStore.getActions();
 
   const createOtpMutation = useCreateOtpMutation();
   const signInMutation = useSignInMutation();
