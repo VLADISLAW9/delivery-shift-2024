@@ -4,6 +4,7 @@ import { useCreateOrderStore } from '@store/hooks/useCreateOrderStore.ts';
 
 import { DeliveryMethodSection } from './components/DeliveryMethodSection';
 import { ReceiverSection } from './components/ReceiverSection';
+import { SenderSection } from './components/SenderSection';
 
 const CreateOrderPage = () => {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const CreateOrderPage = () => {
     <div>
       {section === 'option' && <DeliveryMethodSection />}
       {section === 'receiver' && <ReceiverSection />}
+      {section === 'sender' && <SenderSection />}
     </div>
   );
 };

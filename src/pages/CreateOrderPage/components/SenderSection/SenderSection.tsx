@@ -7,8 +7,8 @@ import { convertPhoneToString } from '@/shared/utils/convertPhoneToString.ts';
 
 import { SectionWrapper } from '../SectionWrapper/SectionWrapper.tsx';
 
-export const ReceiverSection = () => {
-  const { state, functions, form } = useUserSection('receiver');
+export const SenderSection = () => {
+  const { state, functions, form } = useUserSection('sender');
 
   return (
     <SectionWrapper

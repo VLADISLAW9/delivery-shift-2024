@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const receiverSectionSchema = z.object({
+export const userSectionSchema = z.object({
   firstname: z
     .string({ required_error: 'Поле обязательно для заполнения' })
     .min(1, { message: 'Имя должно иметь минимум 1 букву' }),
@@ -13,4 +13,4 @@ export const receiverSectionSchema = z.object({
     .min(11, { message: 'Номер должен иметь минимум 11 цифр' })
 });
 
-export type ReceiverSectionSchema = z.infer<typeof receiverSectionSchema>;
+export type UserSectionSchema = z.infer<typeof userSectionSchema>;

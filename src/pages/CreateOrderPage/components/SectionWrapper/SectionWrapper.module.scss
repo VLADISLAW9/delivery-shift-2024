@@ -1,19 +1,19 @@
-.receiver_section_wrapper {
+.section_wrapper {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 24px
 }
 
 .form {
-  width: 464px;
   display: flex;
+  width: 464px;
   flex-direction: column;
   gap: 24px;
 }
 
 .buttons {
-  margin-top: 20px;
   display: flex;
+  margin-top: 20px;
   gap: 24px;
 }
 
