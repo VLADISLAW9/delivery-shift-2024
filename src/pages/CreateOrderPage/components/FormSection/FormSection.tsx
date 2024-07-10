@@ -1,7 +1,6 @@
 import { Controller } from 'react-hook-form';
 import { PatternFormat } from 'react-number-format';
 import { useSections } from '@pages/CreateOrderPage/hooks/useSections.ts';
-import { useCreateOrderStore } from '@store/hooks/useCreateOrderStore.ts';
 import { Input } from '@ui/Input';
 
 import { convertPhoneToString } from '@/shared/utils/convertPhoneToString.ts';
@@ -88,13 +87,13 @@ export const FormSection = ({ role, type }: FormSectionProps) => {
       onContinue={functions.onSubmit}
     >
       <Controller
-        name='firstname'
+        name='street'
         control={form.control}
         render={({ field, fieldState }) => (
           <Input
             {...field}
-            label='Имя'
-            placeholder='Имя'
+            label='Улица'
+            placeholder='Улица'
             {...(fieldState.error && {
               error: { error: true, message: fieldState.error.message }
             })}
@@ -102,13 +101,13 @@ export const FormSection = ({ role, type }: FormSectionProps) => {
         )}
       />
       <Controller
-        name='lastname'
+        name='house'
         control={form.control}
         render={({ field, fieldState }) => (
           <Input
             {...field}
-            label='Фамилия'
-            placeholder='Фамилия'
+            label='Дом'
+            placeholder='Дом'
             {...(fieldState.error && {
               error: { error: true, message: fieldState.error.message }
             })}
@@ -116,23 +115,27 @@ export const FormSection = ({ role, type }: FormSectionProps) => {
         )}
       />
       <Controller
-        name='middlename'
+        name='apartment'
         control={form.control}
-        render={({ field }) => (
-          <Input {...field} label='Отчетство' placeholder='Отчетство (при наличии)' />
+        render={({ field, fieldState }) => (
+          <Input
+            {...field}
+            label='Квартира'
+            placeholder='Квартира'
+            {...(fieldState.error && {
+              error: { error: true, message: fieldState.error.message }
+            })}
+          />
         )}
       />
       <Controller
-        name='phone'
+        name='comment'
         control={form.control}
-        render={({ field: { onChange, value, ...otherFieldProps }, fieldState }) => (
+        render={({ field, fieldState }) => (
           <Input
-            {...otherFieldProps}
-            component={PatternFormat}
-            format='+7 ### ### ## ##'
-            onChange={(event) => onChange(convertPhoneToString(event.target.value))}
-            label='Телефон'
-            placeholder='Телефон'
+            {...field}
+            label='Заметка'
+            placeholder='Заметка для курьера'
             {...(fieldState.error && {
               error: { error: true, message: fieldState.error.message }
             })}

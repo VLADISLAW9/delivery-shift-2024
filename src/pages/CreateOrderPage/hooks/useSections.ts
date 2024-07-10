@@ -1,5 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import type { AddressSectionSchema } from '@pages/CreateOrderPage/consts/addressSectionSchema.ts';
+import { addressSectionSchema } from '@pages/CreateOrderPage/consts/addressSectionSchema.ts';
 import { useCreateOrderStore } from '@store/hooks/useCreateOrderStore.ts';
 
 import type { UserSectionSchema } from '../consts/userSectionSchema.ts';
@@ -20,7 +22,9 @@ export const useSections = ({ type, role }: Section) => {
     setSender,
     setReceiver,
     sender,
-    receiver
+    receiver,
+    senderAddress,
+    receiverAddress
   } = useCreateOrderStore();
 
   const userForm = useForm<UserSectionSchema>({
@@ -28,7 +32,12 @@ export const useSections = ({ type, role }: Section) => {
     defaultValues: role === 'sender' ? { ...sender } : { ...receiver }
   });
 
-  const form = type === 'user' ? userForm : userForm;
+  const addressForm = useForm<AddressSectionSchema>({
+    resolver: zodResolver(addressSectionSchema),
+    defaultValues: role === 'sender' ? { ...senderAddress } : { ...receiverAddress }
+  });
+
+  const form = type === 'user' ? userForm : addressForm;
 
   const onSubmit = form.handleSubmit((data: UserSectionSchema) => {
     if (type === 'user') {

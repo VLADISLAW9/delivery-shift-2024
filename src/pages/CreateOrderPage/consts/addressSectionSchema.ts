@@ -1,16 +1,22 @@
 import { z } from 'zod';
 
 export const addressSectionSchema = z.object({
-  firstname: z
+  street: z
     .string({ required_error: 'Поле обязательно для заполнения' })
-    .min(1, { message: 'Имя должно иметь минимум 1 букву' }),
-  lastname: z
+    .min(1, { message: 'Поле должно иметь минимум 1 букву' })
+    .max(100, { message: 'Поле должно иметь максимум 100 букв' })
+    .regex(/^[a-zA-Z0-9\s\/\\'`:;\-_.,#]*$/, { message: 'Имя содержит запрещенные символы' }),
+  house: z
     .string({ required_error: 'Поле обязательно для заполнения' })
-    .min(1, { message: 'Фамилия должна иметь минимум 1 букву' }),
-  middlename: z.string().optional(),
-  phone: z
+    .min(1, { message: 'Поле дол иметь минимум 1 букву' })
+    .max(100, { message: 'Поле должно иметь максимум 100 букв' })
+    .regex(/^[a-zA-Z0-9\s\/\\'`:;\-_.,#]*$/, { message: 'Имя содержит запрещенные символы' }),
+  apartment: z
     .string({ required_error: 'Поле обязательно для заполнения' })
-    .min(11, { message: 'Номер должен иметь минимум 11 цифр' })
+    .min(1, { message: 'Поле дол иметь минимум 1 букву' })
+    .max(100, { message: 'Поле должно иметь максимум 100 букв' })
+    .regex(/^[a-zA-Z0-9\s\/\\'`:;\-_.,#]*$/, { message: 'Имя содержит запрещенные символы' }),
+  comment: z.string().optional()
 });
 
 export type AddressSectionSchema = z.infer<typeof addressSectionSchema>;

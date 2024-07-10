@@ -10,9 +10,6 @@ const CreateOrderPage = () => {
 
   const { options, senderPoint, receiverPoint, section, sender, receiver } = useCreateOrderStore();
 
-  console.log('sender', sender);
-  console.log('receiver', receiver);
-
   useEffect(() => {
     if (!options || !senderPoint || !receiverPoint || !section) {
       navigate('/');
