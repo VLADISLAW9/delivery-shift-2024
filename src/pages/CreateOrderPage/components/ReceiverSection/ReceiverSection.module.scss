@@ -1,0 +1,22 @@
+.receiver_section_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form {
+  width: 464px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 24px;
+}
+
+.button {
+  width: 232px;
+}

@@ -25,6 +25,7 @@ interface CreateOrderState {
 }
 
 interface CreateOrderActions {
+  setSection: (section: Section) => void;
   setOptions: (options: Options[]) => void;
 
   setOption: (option: Options) => void;
@@ -55,13 +56,14 @@ const initialState: CreateOrderState = {
 export const useCreateOrderStore = create<CreateOrderState & CreateOrderActions>((set) => ({
   ...initialState,
 
+  setSection: (section) => set(() => ({ section })),
   setOptions: (options) => set(() => ({ options, section: 'option' })),
 
   setOption: (option) => set(() => ({ option, section: 'receiver' })),
   setPayer: (payer) => set(() => ({ payer })),
 
   setSender: (sender) => set(() => ({ sender, section: 'receiverAddress' })),
-  setReceiver: (receiver) => set(() => ({ receiver, section: 'receiver' })),
+  setReceiver: (receiver) => set(() => ({ receiver, section: 'sender' })),
 
   setSenderPoint: (senderPoint) => set(() => ({ senderPoint })),
   setSenderAddress: (senderAddress) => set(() => ({ senderAddress, section: 'payer' })),

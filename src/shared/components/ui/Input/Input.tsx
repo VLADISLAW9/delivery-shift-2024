@@ -22,7 +22,7 @@ type InputProps<
 
 export const Input = forwardRef(
   (
-    { label, className, component, error, id: externalId, required, ...props }: InputProps<'input'>,
+    { label, className, component, error, id: externalId, ...props }: InputProps<'input'>,
     ref: ForwardedRef<HTMLInputElement>
   ) => {
     const internalId = useId();
@@ -32,11 +32,7 @@ export const Input = forwardRef(
 
     return (
       <div className={clsx(cls.input_wrapper, { [cls.input_wrapper_error]: error?.error })}>
-        {label && (
-          <p className={cls.label}>
-            {label} {required && '*'}
-          </p>
-        )}
+        {label && <p className={cls.label}>{label}</p>}
         <Component className={clsx(cls.input, className)} {...props} id={id} ref={ref} />
         {error?.message && <p className={cls.error_message}>{error.message}</p>}
       </div>

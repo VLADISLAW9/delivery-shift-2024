@@ -4,6 +4,8 @@ import { Button } from '@ui/Button';
 import { Input } from '@ui/Input';
 import { Typography } from '@ui/Typography';
 
+import { convertPhoneToString } from '@/shared/utils/convertPhoneToString.ts';
+
 import { CountDownButton } from './components/CountDownButton';
 import { useAuthPage } from './hooks/useAuthPage';
 
@@ -27,7 +29,7 @@ const AuthPage = () => {
               {...otherFieldProps}
               component={PatternFormat}
               format='+7 ### ### ## ##'
-              onChange={(event) => onChange(event.target.value.replace('+', '').replace(/ /g, ''))}
+              onChange={(event) => onChange(convertPhoneToString(event.target.value))}
               placeholder='Телефон'
               {...(fieldState.error && {
                 error: { error: true, message: fieldState.error.message }
