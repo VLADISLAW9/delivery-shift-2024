@@ -8,7 +8,6 @@ type SectionWrapperProps = {
   children: React.ReactNode;
   onComeback: () => void;
   onContinue: () => void;
-  loading: boolean;
   title: string;
 };
 
@@ -16,7 +15,6 @@ export const SectionWrapper = ({
   children,
   onComeback,
   onContinue,
-  loading,
   title
 }: SectionWrapperProps): React.ReactElement => (
   <div className={cls.section_wrapper}>
@@ -25,15 +23,10 @@ export const SectionWrapper = ({
       {children}
       <div>
         <div className={cls.buttons}>
-          <Button
-            loading={loading}
-            variant='default_filled'
-            className={cls.button}
-            onClick={onComeback}
-          >
+          <Button variant='default_filled' className={cls.button} onClick={onComeback}>
             Назад
           </Button>
-          <Button loading={loading} className={cls.button} type='submit'>
+          <Button className={cls.button} type='submit'>
             Продолжить
           </Button>
         </div>
