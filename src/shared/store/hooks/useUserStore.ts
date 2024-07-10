@@ -1,13 +1,12 @@
 import type { User } from '@appTypes/user.ts';
-import { createSelectors } from '@store/utils/createSelectors.ts';
 import { create } from 'zustand';
 
-export interface UserState {
+interface UserState {
   user?: User;
   isLoggedIn: boolean;
 }
 
-export interface UserActions {
+interface UserActions {
   initUser: (user: User) => void;
   setUserData: (user: User) => void;
   clearUser: () => void;
@@ -18,7 +17,7 @@ const initialState: UserState = {
   isLoggedIn: false
 };
 
-export const useUserStoreBase = create((set) => ({
+export const useUserStore = create<UserState & UserActions>((set) => ({
   ...initialState,
 
   initUser: (user) => {
@@ -34,5 +33,3 @@ export const useUserStoreBase = create((set) => ({
     set(initialState);
   }
 }));
-
-export const useUserStore = createSelectors<UserState, UserActions>(useUserStoreBase);

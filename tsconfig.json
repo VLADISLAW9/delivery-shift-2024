@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "./dist/",
-    "types": ["node"],
+    "types": ["node", "vite-plugin-svgr/client"],
     "target": "esnext",
     "module": "esnext",
     "useDefineForClassFields": true,

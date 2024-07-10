@@ -15,7 +15,7 @@ import { phoneSchema } from '../consts/phoneSchema';
 export const useAuthPage = () => {
   const navigate = useNavigate();
 
-  const { initUser } = useUserStore.getActions();
+  const { initUser } = useUserStore();
 
   const createOtpMutation = useCreateOtpMutation();
   const signInMutation = useSignInMutation();

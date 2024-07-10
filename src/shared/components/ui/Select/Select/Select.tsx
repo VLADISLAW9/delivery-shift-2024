@@ -1,7 +1,7 @@
-import type { FC, ForwardedRef, SVGProps } from 'react';
+import type { FC, SVGProps } from 'react';
 import React, { forwardRef } from 'react';
 import type { InputError } from '@appTypes/common';
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
+import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import clsx from 'clsx';
 
@@ -14,11 +14,11 @@ interface SelectProps extends SelectPrimitive.SelectProps {
 }
 
 export const Select = forwardRef<SelectProps, HTMLButtonElement>(
-  ({ children, label, Icon, error, ...props }, forwardedRef) => (
+  ({ children, label, Icon, error, ...props }, ref) => (
     <div className={clsx(cls.select_wrapper, { [cls.select_wrapper_error]: error?.error })}>
       {label && <p className={cls.label}>{label}</p>}
       <SelectPrimitive.Root {...props}>
-        <SelectPrimitive.Trigger className={cls.trigger} ref={forwardedRef}>
+        <SelectPrimitive.Trigger className={cls.trigger} ref={ref}>
           <div className={cls.value_wrapper}>
             {Icon && <Icon />}
             <SelectPrimitive.Value />
@@ -42,17 +42,4 @@ export const Select = forwardRef<SelectProps, HTMLButtonElement>(
       {error?.message && <p className={cls.error_message}>{error.message}</p>}
     </div>
   )
-);
-
-export const SelectItem = forwardRef<SelectPrimitive.SelectItemProps, ForwardedRef<HTMLDivElement>>(
-  ({ children, ...props }, ref) => {
-    return (
-      <SelectPrimitive.Item className={cls.select_item} {...props} ref={ref}>
-        <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
-        <SelectPrimitive.ItemIndicator>
-          <CheckIcon />
-        </SelectPrimitive.ItemIndicator>
-      </SelectPrimitive.Item>
-    );
-  }
 );

@@ -10,7 +10,7 @@ import { useGetSessionQuery } from '@/shared/api/hooks';
 
 export const App = () => {
   const location = useLocation();
-  const { initUser } = useUserStore.getActions();
+  const { initUser } = useUserStore();
   const getSession = useGetSessionQuery();
 
   const token = localStorage.getItem(AUTH_TOKEN);

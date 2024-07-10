@@ -42,7 +42,7 @@ const MainPage = () => {
         <Controller
           control={form.control}
           name='receiverPoint'
-          render={({ field, fieldState }) => (
+          render={({ field }) => (
             <Select
               {...field}
               defaultValue={field.value}
@@ -65,7 +65,7 @@ const MainPage = () => {
         <Controller
           name='senderPoint'
           control={form.control}
-          render={({ field, fieldState }) => (
+          render={({ field }) => (
             <Select
               {...field}
               defaultValue={field.value}
@@ -87,7 +87,7 @@ const MainPage = () => {
         <Controller
           name='package'
           control={form.control}
-          render={({ field, fieldState }) => (
+          render={({ field }) => (
             <Select
               {...field}
               defaultValue={field.value}

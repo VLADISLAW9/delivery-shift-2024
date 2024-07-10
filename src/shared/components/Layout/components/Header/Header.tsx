@@ -12,7 +12,7 @@ interface HeaderProps {
 }
 
 export const Header = ({ mobile }: HeaderProps) => {
-  const { isLoggedIn } = useUserStore.getStates();
+  const { isLoggedIn } = useUserStore();
 
   const onLogout = () => {
     console.log('logout');
