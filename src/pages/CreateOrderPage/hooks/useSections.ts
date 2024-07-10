@@ -2,19 +2,13 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { AddressSectionSchema } from '@pages/CreateOrderPage/consts/addressSectionSchema.ts';
 import { addressSectionSchema } from '@pages/CreateOrderPage/consts/addressSectionSchema.ts';
+import type { Section } from '@store/hooks/useCreateOrderStore.ts';
 import { useCreateOrderStore } from '@store/hooks/useCreateOrderStore.ts';
 
 import type { UserSectionSchema } from '../consts/userSectionSchema.ts';
 import { userSectionSchema } from '../consts/userSectionSchema.ts';
-import type { Role } from '../types/role.ts';
-import type { Type } from '../types/type.ts';
 
-interface Section {
-  type: Type;
-  role: Role;
-}
-
-export const useSections = ({ type, role }: Section) => {
+export const useSections = (section: Section) => {
   const {
     setSection,
     setReceiverAddress,
@@ -29,45 +23,51 @@ export const useSections = ({ type, role }: Section) => {
 
   const userForm = useForm<UserSectionSchema>({
     resolver: zodResolver(userSectionSchema),
-    defaultValues: role === 'sender' ? { ...sender } : { ...receiver }
+    defaultValues: section === 'sender' ? { ...sender } : { ...receiver }
   });
 
   const addressForm = useForm<AddressSectionSchema>({
     resolver: zodResolver(addressSectionSchema),
-    defaultValues: role === 'sender' ? { ...senderAddress } : { ...receiverAddress }
+    defaultValues: section === 'senderAddress' ? { ...senderAddress } : { ...receiverAddress }
   });
 
-  const form = type === 'user' ? userForm : addressForm;
+  const isUserSection = section === 'sender' || section === 'receiver';
 
-  const onSubmit = form.handleSubmit((data: UserSectionSchema) => {
-    if (type === 'user') {
-      if (role === 'sender') {
-        return setSender(data);
-      }
+  const form = isUserSection ? userForm : addressForm;
+
+  const onSubmit = form.handleSubmit((data: UserSectionSchema | AddressSectionSchema) => {
+    if (section === 'sender') {
+      return setSender(data);
+    }
+
+    if (section === 'receiver') {
       return setReceiver(data);
     }
 
-    if (type === 'address') {
-      if (role === 'sender') {
-        return setSenderAddress(data);
-      }
+    if (section === 'senderAddress') {
+      return setSenderAddress(data);
+    }
+
+    if (section === 'receiverAddress') {
       return setReceiverAddress(data);
     }
   });
 
   const onComeback = () => {
-    if (type === 'user') {
-      if (role === 'sender') {
-        return setSection('receiver');
-      }
-      return setSection('option');
+    if (section === 'sender') {
+      return setSection('receiverAddress');
     }
 
-    if (type === 'address') {
-      if (role === 'sender') {
-        return setSection('receiverAddress');
-      }
+    if (section === 'receiver') {
       return setSection('sender');
+    }
+
+    if (section === 'senderAddress') {
+      return setSection('payer');
+    }
+
+    if (section === 'receiverAddress') {
+      return setSection('senderAddress');
     }
   };
 

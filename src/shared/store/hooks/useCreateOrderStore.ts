@@ -5,7 +5,13 @@ import type { User } from '@appTypes/user.ts';
 import { create } from 'zustand';
 
 type Payer = 'RECEIVER' | 'SENDER';
-type Section = 'option' | 'receiver' | 'sender' | 'senderAddress' | 'receiverAddress' | 'payer';
+export type Section =
+  | 'option'
+  | 'receiver'
+  | 'sender'
+  | 'senderAddress'
+  | 'receiverAddress'
+  | 'payer';
 
 interface CreateOrderState {
   section?: Section;

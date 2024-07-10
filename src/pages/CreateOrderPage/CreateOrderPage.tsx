@@ -16,13 +16,15 @@ const CreateOrderPage = () => {
     }
   }, []);
 
+  console.log(options, senderPoint, receiverPoint, section, sender, receiver);
+
   return (
     <div>
       {section === 'option' && <DeliveryMethodSection />}
-      {section === 'receiver' && <FormSection type='user' role='receiver' />}
-      {section === 'sender' && <FormSection type='user' role='sender' />}
-      {section === 'receiverAddress' && <FormSection type='address' role='receiver' />}
-      {section === 'senderAddress' && <FormSection type='address' role='sender' />}
+      {section === 'receiver' && <FormSection section='receiver' />}
+      {section === 'sender' && <FormSection section='sender' />}
+      {section === 'receiverAddress' && <FormSection section='receiverAddress' />}
+      {section === 'senderAddress' && <FormSection section='senderAddress' />}
     </div>
   );
 };
