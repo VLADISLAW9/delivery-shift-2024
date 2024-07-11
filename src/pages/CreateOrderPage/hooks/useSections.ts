@@ -6,7 +6,7 @@ import type { AddressSectionSchema } from '../consts/addressSectionSchema.ts';
 import type { UserSectionSchema } from '../consts/userSectionSchema.ts';
 
 export const useSections = (section: Section) => {
-  const { setSection, setReceiverAddress, setSenderAddress, setSender, setReceiver } =
+  const { setSection, setReceiverAddress, setPayer, setSenderAddress, setSender, setReceiver } =
     useCreateOrderStore();
 
   const form = useCurrentForm(section);
@@ -29,7 +29,8 @@ export const useSections = (section: Section) => {
     }
 
     if (section === 'payer') {
-      return setReceiverAddress(data);
+      console.log(data);
+      return setPayer(data);
     }
   });
 

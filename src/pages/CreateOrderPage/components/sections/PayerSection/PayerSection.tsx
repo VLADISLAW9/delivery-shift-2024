@@ -1,21 +1,22 @@
 import { Controller } from 'react-hook-form';
 import { PayerLabels } from '@pages/CreateOrderPage/components/sections/PayerSection/conts/PayerLabels.ts';
-import { SectionWrapper } from '@pages/CreateOrderPage/components/SectionWrapper';
 import { useSections } from '@pages/CreateOrderPage/hooks/useSections.ts';
 import { RadioGroup, RadioGroupItem } from '@ui/RadioGroup';
+
+import { FormWrapper } from '../../FormWrapper';
 
 export const PayerSection = () => {
   const { functions, form } = useSections('payer');
 
   return (
-    <SectionWrapper
+    <FormWrapper
       title='Оплата доставки'
       onContinue={functions.onSubmit}
       onComeback={functions.onComeback}
       form={form}
     >
       <Controller
-        name='firstname'
+        name='payer'
         control={form.control}
         render={({ field: { onChange, value, ...otherFieldProps }, fieldState }) => (
           <RadioGroup {...otherFieldProps} onChange={onChange} value={value}>
@@ -34,6 +35,6 @@ export const PayerSection = () => {
           </RadioGroup>
         )}
       />
-    </SectionWrapper>
+    </FormWrapper>
   );
 };

@@ -2,21 +2,21 @@ import React from 'react';
 import { Button } from '@ui/Button';
 import { Typography } from '@ui/Typography';
 
-import cls from './SectionWrapper.module.scss';
+import cls from './FormWrapper.module.scss';
 
-type SectionWrapperProps = {
+type FormWrapperProps = {
   children: React.ReactNode;
   onComeback: () => void;
   onContinue: () => void;
   title: string;
 };
 
-export const SectionWrapper = ({
+export const FormWrapper = ({
   children,
   onComeback,
   onContinue,
   title
-}: SectionWrapperProps): React.ReactElement => (
+}: FormWrapperProps): React.ReactElement => (
   <div className={cls.section_wrapper}>
     <Typography variant='typography24_bold'>{title}</Typography>
     <form className={cls.form} onSubmit={onContinue}>

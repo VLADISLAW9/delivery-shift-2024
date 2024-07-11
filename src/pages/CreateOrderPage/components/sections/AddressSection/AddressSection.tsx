@@ -1,8 +1,9 @@
 import { Controller } from 'react-hook-form';
-import { SectionWrapper } from '@pages/CreateOrderPage/components/SectionWrapper';
 import { useSections } from '@pages/CreateOrderPage/hooks/useSections.ts';
 import type { Section } from '@store/hooks/useCreateOrderStore';
 import { Input } from '@ui/Input';
+
+import { FormWrapper } from '../../FormWrapper';
 
 interface AddressSectionProps {
   section: Exclude<Section, 'option' | 'sender' | 'receiver' | 'payer'>;
@@ -11,7 +12,7 @@ interface AddressSectionProps {
 export const AddressSection = ({ section }: AddressSectionProps) => {
   const { functions, form } = useSections(section);
   return (
-    <SectionWrapper
+    <FormWrapper
       title={section === 'receiverAddress' ? 'Откуда забрать' : 'Куда доставить'}
       onComeback={functions.onComeback}
       onContinue={functions.onSubmit}
@@ -72,6 +73,6 @@ export const AddressSection = ({ section }: AddressSectionProps) => {
           />
         )}
       />
-    </SectionWrapper>
+    </FormWrapper>
   );
 };

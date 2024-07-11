@@ -1,11 +1,12 @@
 import { Controller } from 'react-hook-form';
 import { PatternFormat } from 'react-number-format';
-import { SectionWrapper } from '@pages/CreateOrderPage/components/SectionWrapper';
 import { useSections } from '@pages/CreateOrderPage/hooks/useSections.ts';
 import type { Section } from '@store/hooks/useCreateOrderStore';
 import { Input } from '@ui/Input';
 
 import { convertPhoneToString } from '@/shared/utils/convertPhoneToString.ts';
+
+import { FormWrapper } from '../../FormWrapper';
 
 interface UserSectionProps {
   section: Exclude<Section, 'option' | 'senderAddress' | 'receiverAddress' | 'payer'>;
@@ -14,7 +15,7 @@ interface UserSectionProps {
 export const UserSection = ({ section }: UserSectionProps) => {
   const { functions, form } = useSections(section);
   return (
-    <SectionWrapper
+    <FormWrapper
       title={section === 'receiver' ? 'Получатель' : 'Отправитель'}
       onComeback={functions.onComeback}
       onContinue={functions.onSubmit}
@@ -71,6 +72,6 @@ export const UserSection = ({ section }: UserSectionProps) => {
           />
         )}
       />
-    </SectionWrapper>
+    </FormWrapper>
   );
 };
