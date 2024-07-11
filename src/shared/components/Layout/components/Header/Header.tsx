@@ -1,4 +1,4 @@
-import { getRouteAuth, getRouteHistoryOrders, getRouteMain } from '@consts/router';
+import { getRouteAuth, getRouteMain, getRouteOrders } from '@consts/router';
 import { useUserStore } from '@store/hooks/useUserStore';
 import { AppLogo } from '@ui/AppLogo';
 import { Button } from '@ui/Button';
@@ -33,7 +33,7 @@ export const Header = ({ mobile }: HeaderProps) => {
             <Link to='/'>
               <Typography variant='typography16_medium'>Профиль</Typography>
             </Link>
-            <Link to={getRouteHistoryOrders()}>
+            <Link to={getRouteOrders()}>
               <Typography variant='typography16_medium'>История</Typography>
             </Link>
           </div>

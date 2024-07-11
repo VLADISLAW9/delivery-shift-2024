@@ -1,10 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import type { Order } from '@appTypes/order.ts';
+import {
+  orderStatusColors,
+  orderStatuses
+} from '@pages/OrdersListPage/components/OrdersListItem/conts/orderStatuses.ts';
 import { Card } from '@ui/Card';
 import { Link } from '@ui/Link';
 import { Typography } from '@ui/Typography';
-
-import { orderStatusColors, orderStatuses } from './conts/orderStatuses.ts';
 
 import cls from './OrdersListItem.module.scss';
 

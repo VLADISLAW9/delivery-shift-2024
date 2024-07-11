@@ -3,9 +3,9 @@ import { Typography } from '@ui/Typography';
 
 import { OrdersListItem } from './components/OrdersListItem';
 
-import cls from './HistoryOrdersPage.module.scss';
+import cls from './OrdersListPage.module.scss';
 
-const HistoryOrdersPage = () => {
+const OrdersListPage = () => {
   const getOrdersQuery = useGetOrdersQuery();
 
   if (getOrdersQuery.isLoading) {
@@ -27,4 +27,4 @@ const HistoryOrdersPage = () => {
   );
 };
 
-export default HistoryOrdersPage;
+export default OrdersListPage;

@@ -3,13 +3,13 @@ import {
   AppRoutes,
   getRouteAuth,
   getRouteCreateOrder,
-  getRouteHistoryOrders,
-  getRouteMain
+  getRouteMain,
+  getRouteOrders
 } from '@consts/router';
 import { AuthPage } from '@pages/AuthPage';
 import { CreateOrderPage } from '@pages/CreateOrderPage';
-import { HistoryOrdersPage } from '@pages/HistoryOrdersPage';
 import { MainPage } from '@pages/MainPage';
+import { OrdersListPage } from '@pages/OrdersListPage';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.AUTH]: {
@@ -25,8 +25,8 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     element: <CreateOrderPage />,
     authOnly: true
   },
-  [AppRoutes.HISTORY_ORDERS]: {
-    path: getRouteHistoryOrders(),
-    element: <HistoryOrdersPage />
+  [AppRoutes.ORDERS]: {
+    path: getRouteOrders(),
+    element: <OrdersListPage />
   }
 };
