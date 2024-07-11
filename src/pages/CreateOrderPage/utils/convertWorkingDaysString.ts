@@ -1,4 +1,4 @@
-export const getWorkingDaysString = (days) => {
+export const convertWorkingDaysString = (days) => {
   const titles = ['рабочий день', 'рабочих дня', 'рабочих дней'];
   const cases = [2, 0, 1, 1, 1, 2];
 

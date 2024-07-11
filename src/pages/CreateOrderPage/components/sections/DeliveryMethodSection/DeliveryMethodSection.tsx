@@ -1,9 +1,10 @@
 import AirPlaneIcon from '@icons/air-plane.svg';
 import BusIcon from '@icons/bus.svg';
-import { getWorkingDaysString } from '@pages/CreateOrderPage/utils/getWorkingDaysString.ts';
 import { useCreateOrderStore } from '@store/hooks/useCreateOrderStore';
 import { Button } from '@ui/Button';
 import { Typography } from '@ui/Typography';
+
+import { convertWorkingDaysString } from '../../../utils/convertWorkingDaysString.ts';
 
 import cls from './DeliveryMethodSection.module.scss';
 
@@ -33,7 +34,7 @@ export const DeliveryMethodSection = () => {
                   {option.price} ₽
                 </Typography>
                 <Typography tag='p' className={cls.days} variant='typography16_regular'>
-                  {getWorkingDaysString(option.days)}
+                  {convertWorkingDaysString(option.days)}
                 </Typography>
               </div>
             </Button>

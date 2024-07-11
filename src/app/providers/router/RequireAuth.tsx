@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
+import { useUserStore } from '@store/hooks/useUserStore.ts';
 
 import { getRouteAuth } from '@/shared/consts/router';
 
@@ -8,10 +9,12 @@ interface RequireAuthProps {
 }
 
 export const RequireAuth = ({ children }: RequireAuthProps) => {
-  const isUserInited = false;
+  const { isLoggedIn } = useUserStore();
   const location = useLocation();
 
-  if (!isUserInited) {
+  console.log(isLoggedIn);
+
+  if (!isLoggedIn) {
     return <Navigate to={getRouteAuth()} state={{ from: location }} replace />;
   }
 

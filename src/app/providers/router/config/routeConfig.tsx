@@ -1,7 +1,14 @@
 import type { AppRoutesProps } from '@appTypes/common/appRoutesProps.ts';
-import { AppRoutes, getRouteAuth, getRouteCreateOrder, getRouteMain } from '@consts/router';
+import {
+  AppRoutes,
+  getRouteAuth,
+  getRouteCreateOrder,
+  getRouteHistoryOrders,
+  getRouteMain
+} from '@consts/router';
 import { AuthPage } from '@pages/AuthPage';
 import { CreateOrderPage } from '@pages/CreateOrderPage';
+import { HistoryOrdersPage } from '@pages/HistoryOrdersPage';
 import { MainPage } from '@pages/MainPage';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
@@ -15,6 +22,12 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   },
   [AppRoutes.CREATE_ORDER]: {
     path: getRouteCreateOrder(),
-    element: <CreateOrderPage />
+    element: <CreateOrderPage />,
+    authOnly: true
+  },
+  [AppRoutes.HISTORY_ORDERS]: {
+    path: getRouteHistoryOrders(),
+    element: <HistoryOrdersPage />,
+    authOnly: true
   }
 };

@@ -12,3 +12,13 @@
 .button {
   width: 328px;
 }
+
+.options {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.error {
+  color: var(--indicator-error-color)
+}

@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { CheckOrderSection } from '@pages/CreateOrderPage/components/sections/CheckOrderSection';
 import { useCreateOrderStore } from '@store/hooks/useCreateOrderStore/useCreateOrderStore.ts';
 
@@ -9,18 +8,14 @@ import { PayerSection } from './components/sections/PayerSection';
 import { UserSection } from './components/sections/UserSection';
 
 const CreateOrderPage = () => {
-  const navigate = useNavigate();
+  const location = useLocation();
 
   const { options, senderPoint, payer, receiverPoint, section, sender, receiver } =
     useCreateOrderStore();
 
-  useEffect(() => {
-    if (!options || !senderPoint || !receiverPoint || !section) {
-      navigate('/');
-    }
-  }, []);
-
-  console.log(options, senderPoint, receiverPoint, section, sender, receiver, payer);
+  if (!options || !senderPoint || !receiverPoint || !section) {
+    return <Navigate to='/' state={{ from: location }} replace />;
+  }
 
   return (
     <div>

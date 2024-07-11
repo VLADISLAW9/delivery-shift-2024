@@ -39,6 +39,8 @@ interface CreateOrderActions {
 
   setReceiverPoint: (point: Point) => void;
   setReceiverAddress: (address: Address) => void;
+
+  clearOrderStore: () => void;
 }
 
 const initialState: CreateOrderState = {
