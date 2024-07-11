@@ -1,0 +1,22 @@
+.section_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px
+}
+
+.form {
+  display: flex;
+  width: 464px;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.buttons {
+  display: flex;
+  margin-top: 20px;
+  gap: 24px;
+}
+
+.button {
+  width: 232px;
+}

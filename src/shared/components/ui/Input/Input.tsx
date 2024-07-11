@@ -7,6 +7,7 @@ import type {
 } from 'react';
 import { forwardRef, useId } from 'react';
 import type { JSX } from 'react/jsx-runtime';
+import type { InputError } from '@appTypes/common';
 import clsx from 'clsx';
 
 import cls from './Input.module.scss';
@@ -15,13 +16,13 @@ type InputProps<
   Component extends keyof JSX.IntrinsicElements | JSXElementConstructor<any> = 'input'
 > = {
   label?: ReactNode;
-  error?: string;
+  error?: InputError;
   component?: Component;
 } & ComponentProps<Component>;
 
 export const Input = forwardRef(
   (
-    { label, className, component, error, id: externalId, required, ...props }: InputProps<'input'>,
+    { label, className, component, error, id: externalId, ...props }: InputProps<'input'>,
     ref: ForwardedRef<HTMLInputElement>
   ) => {
     const internalId = useId();
@@ -30,14 +31,10 @@ export const Input = forwardRef(
     const Component = component ?? 'input';
 
     return (
-      <div className={clsx(cls.input_wrapper, { [cls.input_wrapper_error]: error })}>
-        {label && (
-          <p className={cls.label}>
-            {label} {required && '*'}
-          </p>
-        )}
+      <div className={clsx(cls.input_wrapper, { [cls.input_wrapper_error]: error?.error })}>
+        {label && <p className={cls.label}>{label}</p>}
         <Component className={clsx(cls.input, className)} {...props} id={id} ref={ref} />
-        {error && <p className={cls.error_message}>{error}</p>}
+        {error?.message && <p className={cls.error_message}>{error.message}</p>}
       </div>
     );
   }

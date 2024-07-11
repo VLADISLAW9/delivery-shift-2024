@@ -8,7 +8,15 @@ export default defineConfig({
     react(),
     svgr({
       svgrOptions: {
-        exportType: 'default'
+        icon: true,
+        svgoConfig: {
+          plugins: [
+            {
+              name: 'removeViewBox',
+              active: false
+            }
+          ]
+        }
       },
       include: '**/*.svg'
     })
@@ -23,7 +31,10 @@ export default defineConfig({
       '@consts': path.resolve(__dirname, './src/shared/consts'),
       '@appTypes': path.resolve(__dirname, './src/shared/types'),
       '@pages': path.resolve(__dirname, './src/pages'),
-      '@hooks': path.resolve(__dirname, './src/shared/hooks')
+      '@hooks': path.resolve(__dirname, './src/shared/hooks'),
+      '@icons': path.resolve(__dirname, './assets/icons'),
+      '@api': path.resolve(__dirname, './src/shared/api'),
+      '@store': path.resolve(__dirname, './src/shared/store')
     }
   }
 });

@@ -1,0 +1,25 @@
+.order_data_card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.body {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.body_item {
+ width: 350px;
+}
+
+.body_title {
+  color: var(--text-tertiary-color)
+}

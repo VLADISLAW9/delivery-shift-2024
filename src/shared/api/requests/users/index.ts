@@ -1,9 +1,12 @@
-import { api } from '../../instance.ts';
+import type { Response } from '@appTypes/common';
+import type { User } from '@appTypes/user';
 
-export interface SignInParams {
+import { api } from '../../instance';
+
+interface SignInParams {
   phone: string;
 }
-export type SignInConfig = AxiosRequestConfig<SignInParams>;
+type SignInConfig = AxiosRequestConfig<SignInParams>;
 
 interface SignInResponse extends Response {
   retryDelay: number;
@@ -11,3 +14,12 @@ interface SignInResponse extends Response {
 
 export const signIn = async ({ params, config }: SignInConfig) =>
   api.post<SignInResponse>('/users/signin', params, config);
+
+type GetSessionConfig = AxiosRequestConfig;
+
+interface GetSessionResponse extends Response {
+  user: User;
+}
+
+export const getSession = async (requestConfig?: GetSessionConfig) =>
+  api.get<GetSessionResponse>('/users/session', requestConfig);

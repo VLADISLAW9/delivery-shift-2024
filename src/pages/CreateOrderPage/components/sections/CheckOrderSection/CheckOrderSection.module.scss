@@ -1,0 +1,24 @@
+.check_order_section, .order {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  width: 328px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.error {
+  color: var(--indicator-error-color)
+}

@@ -1,22 +1,17 @@
-import { isMobile } from 'react-device-detect';
+import { isMobile as mobile } from 'react-device-detect';
+import { LayoutLoader } from '@components/Layout/components/LayoutLoader/LayoutLoader.tsx';
 
-import { AppRouter } from '@/app/providers/router/AppRouter';
+import { DesktopLayout } from './components/DesktopLayout';
+import { MobileLayout } from './components/MobileLayout';
 
-import { Header } from './components/Header';
+interface LayoutProps {
+  loading?: boolean;
+}
 
-import cls from './Layout.module.scss';
+export const Layout = ({ loading }: LayoutProps) => {
+  if (loading) return <LayoutLoader />;
 
-export const Layout = () => {
-  if (isMobile) {
-    return <div>Mobile</div>;
-  }
+  if (mobile) return <MobileLayout />;
 
-  return (
-    <div className={cls.desktop_layout}>
-      <Header />
-      <div className={cls.content}>
-        <AppRouter />
-      </div>
-    </div>
-  );
+  return <DesktopLayout />;
 };

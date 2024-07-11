@@ -1,4 +1,5 @@
-import { getRouteAuth, getRouteMain } from '@consts/router.ts';
+import { getRouteAuth, getRouteMain } from '@consts/router';
+import { useUserStore } from '@store/hooks/useUserStore';
 import { AppLogo } from '@ui/AppLogo';
 import { Button } from '@ui/Button';
 import { Link } from '@ui/Link';
@@ -7,17 +8,17 @@ import { Typography } from '@ui/Typography';
 import cls from './Header.module.scss';
 
 interface HeaderProps {
-  isMobile?: boolean;
+  mobile?: boolean;
 }
 
-export const Header = ({ isMobile }: HeaderProps) => {
-  const isLoggedIn = false;
+export const Header = ({ mobile }: HeaderProps) => {
+  const { isLoggedIn } = useUserStore();
 
   const onLogout = () => {
     console.log('logout');
   };
 
-  if (isMobile) {
+  if (mobile) {
     return null;
   }
 
