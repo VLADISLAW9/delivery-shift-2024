@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { CheckOrderSection } from '@pages/CreateOrderPage/components/sections/CheckOrderSection';
 import { useCreateOrderStore } from '@store/hooks/useCreateOrderStore/useCreateOrderStore.ts';
 
 import { AddressSection } from './components/sections/AddressSection';
@@ -29,6 +30,7 @@ const CreateOrderPage = () => {
       {section === 'receiverAddress' && <AddressSection section='receiverAddress' />}
       {section === 'senderAddress' && <AddressSection section='senderAddress' />}
       {section === 'payer' && <PayerSection />}
+      {section === 'checkOrder' && <CheckOrderSection />}
     </div>
   );
 };

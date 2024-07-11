@@ -1,0 +1,12 @@
+.card {
+  padding: 15px 30px;
+  border-radius: 24px;
+}
+
+.outlined {
+  border: 1px solid var(--border-extra-light-color);
+}
+
+.filled {
+  background-color: var(--bg-secondary);
+}

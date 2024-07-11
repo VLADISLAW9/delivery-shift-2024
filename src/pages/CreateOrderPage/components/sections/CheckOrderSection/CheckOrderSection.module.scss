@@ -1,0 +1,14 @@
+.check_order_section, .order {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  width: 328px;
+}

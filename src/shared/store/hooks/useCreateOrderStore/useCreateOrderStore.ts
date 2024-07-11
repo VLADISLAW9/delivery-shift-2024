@@ -60,7 +60,7 @@ export const useCreateOrderStore = create<CreateOrderState & CreateOrderActions>
   setOptions: (options) => set(() => ({ options, section: 'option' })),
 
   setOption: (option) => set(() => ({ option, section: 'receiver' })),
-  setPayer: (payer) => set(() => ({ payer })),
+  setPayer: (payer) => set(() => ({ payer, section: 'checkOrder' })),
 
   setSender: (sender) => set(() => ({ sender, section: 'receiverAddress' })),
   setReceiver: (receiver) => set(() => ({ receiver, section: 'sender' })),

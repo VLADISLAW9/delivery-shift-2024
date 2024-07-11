@@ -4,4 +4,5 @@ export type Section =
   | 'sender'
   | 'senderAddress'
   | 'receiverAddress'
-  | 'payer';
+  | 'payer'
+  | 'checkOrder';

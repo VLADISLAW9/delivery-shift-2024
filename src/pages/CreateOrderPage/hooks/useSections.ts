@@ -1,9 +1,8 @@
+import type { AddressSectionSchema } from '@pages/CreateOrderPage/consts/addressSectionSchema.ts';
+import type { UserSectionSchema } from '@pages/CreateOrderPage/consts/userSectionSchema.ts';
 import { useCurrentForm } from '@pages/CreateOrderPage/hooks/useCurrentForm.ts';
 import type { Section } from '@store/hooks/useCreateOrderStore';
 import { useCreateOrderStore } from '@store/hooks/useCreateOrderStore/useCreateOrderStore.ts';
-
-import type { AddressSectionSchema } from '../consts/addressSectionSchema.ts';
-import type { UserSectionSchema } from '../consts/userSectionSchema.ts';
 
 export const useSections = (section: Section) => {
   const { setSection, setReceiverAddress, setPayer, setSenderAddress, setSender, setReceiver } =
@@ -29,30 +28,29 @@ export const useSections = (section: Section) => {
     }
 
     if (section === 'payer') {
-      console.log(data);
       return setPayer(data);
     }
   });
 
   const onComeback = () => {
     if (section === 'sender') {
-      return setSection('receiverAddress');
+      return setSection('receiver');
     }
 
     if (section === 'receiver') {
-      return setSection('sender');
+      return setSection('option');
     }
 
     if (section === 'senderAddress') {
-      return setSection('payer');
+      return setSection('receiverAddress');
     }
 
     if (section === 'receiverAddress') {
-      return setSection('senderAddress');
+      return setSection('sender');
     }
 
     if (section === 'payer') {
-      return setSection('receiver');
+      return setSection('senderAddress');
     }
   };
 
