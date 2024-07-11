@@ -1,30 +1,29 @@
 import AirPlaneIcon from '@icons/air-plane.svg';
 import BusIcon from '@icons/bus.svg';
 import { getWorkingDaysString } from '@pages/CreateOrderPage/utils/getWorkingDaysString.ts';
+import { useCreateOrderStore } from '@store/hooks/useCreateOrderStore';
 import { Button } from '@ui/Button';
 import { Typography } from '@ui/Typography';
-
-import { useDeliveryMethodSection } from './hooks/useDeliveryMethodSection.ts';
 
 import cls from './DeliveryMethodSection.module.scss';
 
 export const DeliveryMethodSection = () => {
-  const { state, functions } = useDeliveryMethodSection();
+  const { options, setOption } = useCreateOrderStore();
 
   return (
     <section className={cls.delivery_method_section_wrapper}>
       <Typography variant='typography24_bold'>Способ доставки</Typography>
       <div className={cls.delivery_methods}>
-        {state.options?.map((option) => {
+        {options?.map((option) => {
           const Icon = option.type === 'EXPRESS' ? AirPlaneIcon : BusIcon;
           return (
             <Button
-              onClick={() => functions.setOption(option)}
+              onClick={() => setOption(option)}
               variant='clear'
               className={cls.delivery_method_button}
             >
               <div className={cls.button_icon_wrapper}>
-                <Icon fill='red' className={cls.button_icon} />
+                <Icon className={cls.button_icon} />
               </div>
               <div className={cls.button_text}>
                 <Typography tag='h3' className={cls.title} variant='typography16_regular'>

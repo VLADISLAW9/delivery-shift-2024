@@ -1,14 +1,17 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCreateOrderStore } from '@store/hooks/useCreateOrderStore.ts';
+import { useCreateOrderStore } from '@store/hooks/useCreateOrderStore/useCreateOrderStore.ts';
 
-import { DeliveryMethodSection } from './components/DeliveryMethodSection';
-import { FormSection } from './components/FormSection';
+import { AddressSection } from './components/sections/AddressSection';
+import { DeliveryMethodSection } from './components/sections/DeliveryMethodSection';
+import { PayerSection } from './components/sections/PayerSection';
+import { UserSection } from './components/sections/UserSection';
 
 const CreateOrderPage = () => {
   const navigate = useNavigate();
 
-  const { options, senderPoint, receiverPoint, section, sender, receiver } = useCreateOrderStore();
+  const { options, senderPoint, payer, receiverPoint, section, sender, receiver } =
+    useCreateOrderStore();
 
   useEffect(() => {
     if (!options || !senderPoint || !receiverPoint || !section) {
@@ -16,15 +19,16 @@ const CreateOrderPage = () => {
     }
   }, []);
 
-  console.log(options, senderPoint, receiverPoint, section, sender, receiver);
+  console.log(options, senderPoint, receiverPoint, section, sender, receiver, payer);
 
   return (
     <div>
       {section === 'option' && <DeliveryMethodSection />}
-      {section === 'receiver' && <FormSection section='receiver' />}
-      {section === 'sender' && <FormSection section='sender' />}
-      {section === 'receiverAddress' && <FormSection section='receiverAddress' />}
-      {section === 'senderAddress' && <FormSection section='senderAddress' />}
+      {section === 'receiver' && <UserSection section='receiver' />}
+      {section === 'sender' && <UserSection section='sender' />}
+      {section === 'receiverAddress' && <AddressSection section='receiverAddress' />}
+      {section === 'senderAddress' && <AddressSection section='senderAddress' />}
+      {section === 'payer' && <PayerSection />}
     </div>
   );
 };

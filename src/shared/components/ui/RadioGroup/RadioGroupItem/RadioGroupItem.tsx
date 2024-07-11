@@ -2,24 +2,21 @@ import type { ForwardedRef } from 'react';
 import { forwardRef } from 'react';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 
-interface RedioGroupItemProps extends RadioGroupPrimitive.RadioGroupItemProps {
-  variant: 'default' | 'tabs';
+import cls from './RadioGroupItem.module.scss';
+
+interface RadioGroupItemProps extends RadioGroupPrimitive.RadioGroupItemProps {
+  value: string;
 }
 
-export const RadioGroupItem = forwardRef<RedioGroupItemProps, ForwardedRef<HTMLDivElement>>(
-  ({ children, variant = 'default', ...props }, ref) => {
-    if (variant === 'tabs') {
-      return (
-        <RadioGroupPrimitive.Item className='RadioGroupItem' {...props}>
-          <RadioGroupPrimitive.Indicator ref={ref} className='RadioGroupIndicator' />
-        </RadioGroupPrimitive.Item>
-      );
-    }
-
-    return (
-      <RadioGroupPrimitive.Item className='RadioGroupItem' {...props}>
-        <RadioGroupPrimitive.Indicator ref={ref} className='RadioGroupIndicator' />
+export const RadioGroupItem = forwardRef<RadioGroupItemProps, ForwardedRef<HTMLDivElement>>(
+  ({ children, value, error, ...props }, ref) => (
+    <div className={cls.radio_group_item_wrapper}>
+      <RadioGroupPrimitive.Item ref={ref} className={cls.radio_group_item} value={value} {...props}>
+        <RadioGroupPrimitive.Indicator className={cls.radio_group_indicator} />
       </RadioGroupPrimitive.Item>
-    );
-  }
+      <label className='Label' htmlFor='r1'>
+        {children}
+      </label>
+    </div>
+  )
 );

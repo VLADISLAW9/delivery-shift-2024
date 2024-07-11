@@ -1,39 +1,15 @@
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import type { AddressSectionSchema } from '@pages/CreateOrderPage/consts/addressSectionSchema.ts';
-import { addressSectionSchema } from '@pages/CreateOrderPage/consts/addressSectionSchema.ts';
-import type { Section } from '@store/hooks/useCreateOrderStore.ts';
-import { useCreateOrderStore } from '@store/hooks/useCreateOrderStore.ts';
+import { useCurrentForm } from '@pages/CreateOrderPage/hooks/useCurrentForm.ts';
+import type { Section } from '@store/hooks/useCreateOrderStore';
+import { useCreateOrderStore } from '@store/hooks/useCreateOrderStore/useCreateOrderStore.ts';
 
+import type { AddressSectionSchema } from '../consts/addressSectionSchema.ts';
 import type { UserSectionSchema } from '../consts/userSectionSchema.ts';
-import { userSectionSchema } from '../consts/userSectionSchema.ts';
 
 export const useSections = (section: Section) => {
-  const {
-    setSection,
-    setReceiverAddress,
-    setSenderAddress,
-    setSender,
-    setReceiver,
-    sender,
-    receiver,
-    senderAddress,
-    receiverAddress
-  } = useCreateOrderStore();
+  const { setSection, setReceiverAddress, setSenderAddress, setSender, setReceiver } =
+    useCreateOrderStore();
 
-  const userForm = useForm<UserSectionSchema>({
-    resolver: zodResolver(userSectionSchema),
-    defaultValues: section === 'sender' ? { ...sender } : { ...receiver }
-  });
-
-  const addressForm = useForm<AddressSectionSchema>({
-    resolver: zodResolver(addressSectionSchema),
-    defaultValues: section === 'senderAddress' ? { ...senderAddress } : { ...receiverAddress }
-  });
-
-  const isUserSection = section === 'sender' || section === 'receiver';
-
-  const form = isUserSection ? userForm : addressForm;
+  const form = useCurrentForm(section);
 
   const onSubmit = form.handleSubmit((data: UserSectionSchema | AddressSectionSchema) => {
     if (section === 'sender') {
@@ -49,6 +25,10 @@ export const useSections = (section: Section) => {
     }
 
     if (section === 'receiverAddress') {
+      return setReceiverAddress(data);
+    }
+
+    if (section === 'payer') {
       return setReceiverAddress(data);
     }
   });
@@ -68,6 +48,10 @@ export const useSections = (section: Section) => {
 
     if (section === 'receiverAddress') {
       return setSection('senderAddress');
+    }
+
+    if (section === 'payer') {
+      return setSection('receiver');
     }
   };
 

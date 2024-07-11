@@ -4,6 +4,7 @@ import MessageIcon from '@icons/message.svg';
 import PlaneIcon from '@icons/plane.svg';
 import globeImage from '@images/globe.png';
 import { Button } from '@ui/Button';
+import { RadioGroup, RadioGroupItem } from '@ui/RadioGroup';
 import { Select, SelectItem } from '@ui/Select';
 import { Typography } from '@ui/Typography';
 
@@ -48,7 +49,6 @@ const MainPage = () => {
               defaultValue={field.value}
               onValueChange={field.onChange}
               Icon={GeoIcon}
-              error={state.error}
               label='Город отравки'
               {...(state.error && {
                 error: { error: true }

@@ -5,7 +5,7 @@ import { useGetPackagesQuery, useGetPointsQuery } from '@api/hooks';
 import { useCalcDeliveryMutation } from '@api/hooks/useCalcDeliveryMutation.ts';
 import { getRouteCreateOrder } from '@consts/router.ts';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useCreateOrderStore } from '@store/hooks/useCreateOrderStore.ts';
+import { useCreateOrderStore } from '@store/hooks/useCreateOrderStore';
 
 import type { CalcDeliverySchema } from '../consts/calcDeliverySchema.ts';
 import { calcDeliverySchema } from '../consts/calcDeliverySchema.ts';

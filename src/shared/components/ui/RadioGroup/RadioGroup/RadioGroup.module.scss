@@ -1,0 +1,17 @@
+.radio_group_root {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radio_group_root_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.error {
+  color: var(--indicator-error-color);
+  font: var(--font-14-regular)
+}
+

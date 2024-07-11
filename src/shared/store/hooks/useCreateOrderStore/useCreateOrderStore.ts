@@ -4,14 +4,8 @@ import type { Point } from '@appTypes/point.ts';
 import type { User } from '@appTypes/user.ts';
 import { create } from 'zustand';
 
-type Payer = 'RECEIVER' | 'SENDER';
-export type Section =
-  | 'option'
-  | 'receiver'
-  | 'sender'
-  | 'senderAddress'
-  | 'receiverAddress'
-  | 'payer';
+import type { Payer } from './types/payer.ts';
+import type { Section } from './types/sections.ts';
 
 interface CreateOrderState {
   section?: Section;
