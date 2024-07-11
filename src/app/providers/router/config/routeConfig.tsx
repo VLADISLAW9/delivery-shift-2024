@@ -27,7 +27,6 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   },
   [AppRoutes.HISTORY_ORDERS]: {
     path: getRouteHistoryOrders(),
-    element: <HistoryOrdersPage />,
-    authOnly: true
+    element: <HistoryOrdersPage />
   }
 };
