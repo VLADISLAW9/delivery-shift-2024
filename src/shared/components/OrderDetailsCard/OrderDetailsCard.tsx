@@ -8,6 +8,7 @@ import { Typography } from '@ui/Typography';
 import cls from './OrderDetailsCard.module.scss';
 
 export interface OrderDetailsCard {
+  showRedirectTo?: boolean;
   header: {
     title: string;
     redirectTo: Section;
@@ -18,16 +19,18 @@ export interface OrderDetailsCard {
   }[];
 }
 
-export const OrderDetailsCard = ({ header, body }: OrderDetailsCard) => {
+export const OrderDetailsCard = ({ showRedirectTo = false, header, body }: OrderDetailsCard) => {
   const { setSection } = useCreateOrderStore();
 
   return (
     <Card className={cls.order_data_card} component='li'>
       <div className={cls.header}>
         <Typography variant='typography16_medium'>{header.title}</Typography>
-        <Button onClick={() => setSection(header.redirectTo)} variant='clear'>
-          <PencilIcon />
-        </Button>
+        {showRedirectTo && (
+          <Button onClick={() => setSection(header.redirectTo)} variant='clear'>
+            <PencilIcon />
+          </Button>
+        )}
       </div>
       <div className={cls.body}>
         {body.map(({ title, description }) => (

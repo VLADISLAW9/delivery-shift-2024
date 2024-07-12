@@ -19,7 +19,7 @@ interface AddressItem extends OrderDataItem {
 const createUserBody = (user: User) => [
   {
     title: 'ФИО',
-    description: `${user?.firstname} ${user?.lastname} ${user?.middlename}`
+    description: `${user?.firstname} ${user?.lastname} ${user?.middlename ?? ''}`
   },
   {
     title: 'Телефон',

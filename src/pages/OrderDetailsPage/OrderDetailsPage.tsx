@@ -1,16 +1,20 @@
 import { OrderDetailsCard } from '@components/OrderDetailsCard';
 import { CancelOrderModal } from '@pages/OrderDetailsPage/components/CancelOrderModal';
-import { useOrdersDetailsPage } from '@pages/OrderDetailsPage/hooks/useOrdersDetailsPage.ts';
+import { useOrderDetailsPage } from '@pages/OrderDetailsPage/hooks/useOrderDetailsPage.ts';
 import { Button } from '@ui/Button';
 import { Typography } from '@ui/Typography';
 
 import cls from './OrderDetailsPage.module.scss';
 
 const OrderDetailsPage = () => {
-  const { state, functions } = useOrdersDetailsPage();
+  const { state, functions } = useOrderDetailsPage();
 
   if (state.loading.getOrdersId) {
     return <div>Загрузка</div>;
+  }
+
+  if (!state.orderDetailsItems) {
+    return <div>Нет данных</div>;
   }
 
   return (

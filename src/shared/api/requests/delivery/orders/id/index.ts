@@ -12,4 +12,4 @@ interface GetOrderResponse extends BaseResponse {
 }
 
 export const getOrdersId = async ({ params, config }: GetOrderConfig) =>
-  api.get<GetOrderResponse>(`/delivery/orders`, params, config);
+  api.get<GetOrderResponse>(`/delivery/orders/${params.id}`, config);

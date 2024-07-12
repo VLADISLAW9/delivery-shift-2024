@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCreateOrderMutation } from '@api/hooks/useCreateOrderMutation.ts';
 import { getOrderDetailsItems } from '@components/OrderDetailsCard';
+import { getRouteOrders } from '@consts/router.ts';
 import { useCreateOrderStore } from '@store/hooks/useCreateOrderStore';
 
 export const useCheckOrderSection = () => {
@@ -34,7 +35,7 @@ export const useCheckOrderSection = () => {
       params: {
         senderPoint,
         option,
-        payer,
+        payer: payer?.payer,
         receiverPoint,
         receiver,
         senderAddress,
@@ -52,7 +53,7 @@ export const useCheckOrderSection = () => {
 
   const onCloseModal = () => {
     setOpenModal(false);
-    navigate('/');
+    navigate(getRouteOrders());
     clearOrderStore();
   };
 

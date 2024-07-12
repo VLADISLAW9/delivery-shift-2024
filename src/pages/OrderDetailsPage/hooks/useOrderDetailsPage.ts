@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useCancelOrderMutation } from '@api/hooks/useCancelOrderMutation.ts';
 import { useGetOrdersIdQuery } from '@api/hooks/useGetOrdersIdQuery.ts';
@@ -6,13 +6,13 @@ import { getOrderDetailsItems } from '@components/OrderDetailsCard';
 import { getRouteOrders } from '@consts/router.ts';
 import { useQueryClient } from '@tanstack/react-query';
 
-export const useOrdersDetailsPage = () => {
+export const useOrderDetailsPage = () => {
   const queryClient = useQueryClient();
 
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const getOrdersId = useGetOrdersIdQuery(id);
+  const getOrdersId = useGetOrdersIdQuery({ id });
   const cancelOrder = useCancelOrderMutation({
     options: { onSuccess: () => queryClient.invalidateQueries({ queryKey: ['getOrders'] }) }
   });
@@ -41,6 +41,10 @@ export const useOrdersDetailsPage = () => {
       return setError(cancelOrderResponse.data.reason);
     }
 
+    if (cancelOrderResponse?.data?.error || cancelOrderResponse?.data?.message) {
+      return setError(cancelOrderResponse?.data?.message ?? 'Произошла ошибка');
+    }
+
     setOpenCancelOrderModal(false);
     navigate(getRouteOrders());
   };
@@ -48,6 +52,12 @@ export const useOrdersDetailsPage = () => {
   const onCloseOrderDetailsPage = () => {
     navigate(getRouteOrders());
   };
+
+  useEffect(() => {
+    if (getOrdersId.data) {
+      console.log(getOrdersId.data);
+    }
+  }, [getOrdersId.data]);
 
   return {
     state: {

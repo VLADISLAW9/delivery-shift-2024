@@ -1,17 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useGetPackagesQuery } from '@api/hooks/useGetPackagesQuery.ts';
+import { useGetPointsQuery } from '@api/hooks/useGetPointsQuery.ts';
 import { useUpdateProfileMutation } from '@api/hooks/useUpdateProfileMutation.ts';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { ProfileSchema } from '@pages/ProfilePage/consts/profileSchema.ts';
 import { profileSchema } from '@pages/ProfilePage/consts/profileSchema.ts';
+import { useCitiesStore } from '@store/hooks/useCitiesStore.ts';
 import { useUserStore } from '@store/hooks/useUserStore.ts';
 
 export const useProfilePage = () => {
   const { user, setUserData } = useUserStore();
 
-  const updateProfileMutation = useUpdateProfileMutation();
+  const getPointsQuery = useGetPointsQuery();
 
-  console.log(user);
+  const { cities, setCities } = useCitiesStore();
+
+  const updateProfileMutation = useUpdateProfileMutation();
 
   const form = useForm<ProfileSchema>({
     resolver: zodResolver(profileSchema),
@@ -59,8 +64,15 @@ export const useProfilePage = () => {
     });
   });
 
+  useEffect(() => {
+    if (getPointsQuery.data && !cities?.length) {
+      setCities(getPointsQuery.data.data.points);
+    }
+  }, [getPointsQuery.data]);
+
   return {
     state: {
+      cities,
       updateProfileError,
       form,
       isLoading: updateProfileMutation.isPending

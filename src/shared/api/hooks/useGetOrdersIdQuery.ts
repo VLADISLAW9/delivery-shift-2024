@@ -1,9 +1,9 @@
+import type { GetOrderParams } from '@api/requests/delivery/orders/id';
 import { getOrdersId } from '@api/requests/delivery/orders/id';
 import { useQuery } from '@tanstack/react-query';
 
-export const useGetOrdersIdQuery = (settings?: QuerySettings<typeof getOrdersId>) =>
+export const useGetOrdersIdQuery = (params: GetOrderParams) =>
   useQuery({
-    queryKey: ['getOrdersId'],
-    queryFn: () => getOrdersId({ config: settings?.config }),
-    ...settings?.options
+    queryKey: ['getOrdersId', params],
+    queryFn: () => getOrdersId({ params })
   });

@@ -1,6 +1,7 @@
 import { Controller } from 'react-hook-form';
 import { Button } from '@ui/Button';
 import { Input } from '@ui/Input';
+import { Select, SelectItem } from '@ui/Select';
 import { Typography } from '@ui/Typography';
 
 import { useProfilePage } from './hooks/useProfilePage.ts';
@@ -90,12 +91,21 @@ const ProfilePage = () => {
           control={state.form.control}
           name='city'
           render={({ field, fieldState }) => (
-            <Input
+            <Select
               {...field}
+              defaultValue={field.value}
+              onValueChange={field.onChange}
               label='Город'
-              placeholder='Город'
-              {...(fieldState.error && { error: fieldState.error.message })}
-            />
+              {...(fieldState.error && {
+                error: { error: true, message: fieldState.error.message }
+              })}
+            >
+              {state.cities?.map((city) => (
+                <SelectItem key={city.id} value={city.id}>
+                  {city.name}
+                </SelectItem>
+              ))}
+            </Select>
           )}
         />
         <Button loading={state.isLoading} type='submit' className={cls.update_button}>

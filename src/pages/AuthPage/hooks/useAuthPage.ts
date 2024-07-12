@@ -46,8 +46,10 @@ export const useAuthPage = () => {
 
   const handleSignIn = async (data: OtpCodeSchema) => {
     const signInResponse = await signInMutation.mutateAsync({
-      phone: currentPhone,
-      code: data.otpCode
+      params: {
+        phone: currentPhone,
+        code: data.otpCode
+      }
     });
 
     if (!signInResponse.data.success && signInResponse.data.reason) {

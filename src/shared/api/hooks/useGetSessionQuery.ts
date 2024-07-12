@@ -5,7 +5,7 @@ import { getSession } from '@/shared/api/requests/users/session';
 
 export const useGetSessionQuery = (settings?: QuerySettings<typeof getSession>) =>
   useQuery({
-    queryKey: ['getSession'],
+    queryKey: ['getSession', settings?.config],
     queryFn: () => {
       const token = localStorage.getItem(AUTH_TOKEN);
 

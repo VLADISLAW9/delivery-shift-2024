@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 
 export const useGetOrdersQuery = (settings?: QuerySettings<typeof getOrders>) =>
   useQuery({
-    queryKey: ['getOrders'],
+    queryKey: ['getOrders', settings?.config],
     queryFn: () => getOrders({ config: settings?.config }),
     ...settings?.options
   });
