@@ -31,14 +31,17 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   },
   [AppRoutes.ORDERS]: {
     path: getRouteOrders(),
-    element: <OrdersListPage />
+    element: <OrdersListPage />,
+    authOnly: true
   },
   [AppRoutes.ORDER_DETAILS]: {
     path: getRouteOrderDetails(':id'),
-    element: <OrderDetailsPage />
+    element: <OrderDetailsPage />,
+    authOnly: true
   },
   [AppRoutes.PROFILE]: {
     path: getRouteProfile(),
-    element: <ProfilePage />
+    element: <ProfilePage />,
+    authOnly: true
   }
 };

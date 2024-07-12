@@ -51,8 +51,15 @@ export const UserSection = ({ section }: UserSectionProps) => {
       <Controller
         name='middlename'
         control={form.control}
-        render={({ field }) => (
-          <Input {...field} label='Отчетство' placeholder='Отчетство (при наличии)' />
+        render={({ field, fieldState }) => (
+          <Input
+            {...field}
+            label='Отчетство'
+            placeholder='Отчетство (при наличии)'
+            {...(fieldState.error && {
+              error: { error: true, message: fieldState.error.message }
+            })}
+          />
         )}
       />
       <Controller

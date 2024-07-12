@@ -26,7 +26,7 @@ export const useUserStore = create<UserState & UserActions>((set) => ({
   },
 
   setUserData: (newUserData) => {
-    set(({ user }) => ({ user: { id: user.id, ...newUserData } }));
+    set(({ user }) => ({ user: { _id: user._id, phone: user.phone, ...newUserData } }));
   },
 
   clearUser: () => {

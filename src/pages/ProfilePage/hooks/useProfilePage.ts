@@ -21,16 +21,18 @@ export const useProfilePage = () => {
   const form = useForm<ProfileSchema>({
     resolver: zodResolver(profileSchema),
     defaultValues: {
-      middlename: user?.middlename || '',
-      firstname: user?.firstname || '',
-      lastname: user?.lastname || '',
-      email: user?.email || '',
-      phone: user?.phone || '',
-      city: user?.city || ''
+      middlename: user?.middlename,
+      firstname: user?.firstname,
+      lastname: user?.lastname,
+      email: user?.email,
+      phone: user?.phone,
+      city: user?.city
     }
   });
 
   const [updateProfileError, setUpdateProfileError] = useState('');
+
+  console.log(user);
 
   const onUpdateProfileData = form.handleSubmit(async (data: ProfileSchema) => {
     setUpdateProfileError('');
