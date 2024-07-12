@@ -1,3 +1,4 @@
+import { AUTH_TOKEN } from '@consts/localstorage.ts';
 import { getRouteAuth, getRouteMain, getRouteOrders } from '@consts/router';
 import { useUserStore } from '@store/hooks/useUserStore';
 import { AppLogo } from '@ui/AppLogo';
@@ -13,9 +14,11 @@ interface HeaderProps {
 
 export const Header = ({ mobile }: HeaderProps) => {
   const { isLoggedIn } = useUserStore();
+  const { clearUser } = useUserStore();
 
   const onLogout = () => {
-    console.log('logout');
+    clearUser();
+    localStorage.removeItem(AUTH_TOKEN);
   };
 
   if (mobile) {
