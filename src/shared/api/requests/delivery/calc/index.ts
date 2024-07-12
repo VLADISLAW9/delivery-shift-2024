@@ -12,6 +12,7 @@ export interface CalcDeliveryParams {
   senderPoint: Point;
   receiverPoint: Point;
 }
+
 export type CalcDeliveryConfig = AxiosRequestConfig<CalcDeliveryParams>;
 
 interface CalcDeliveryResponse extends Response {

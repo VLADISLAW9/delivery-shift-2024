@@ -5,9 +5,9 @@ import { Button } from '@ui/Button';
 import { Card } from '@ui/Card';
 import { Typography } from '@ui/Typography';
 
-import cls from './OrderDataCard.module.scss';
+import cls from './OrderDetailsCard.module.scss';
 
-export interface OrderDataCard {
+export interface OrderDetailsCard {
   header: {
     title: string;
     redirectTo: Section;
@@ -18,7 +18,7 @@ export interface OrderDataCard {
   }[];
 }
 
-export const OrderDataCard = ({ header, body }: OrderDataCard) => {
+export const OrderDetailsCard = ({ header, body }: OrderDetailsCard) => {
   const { setSection } = useCreateOrderStore();
 
   return (

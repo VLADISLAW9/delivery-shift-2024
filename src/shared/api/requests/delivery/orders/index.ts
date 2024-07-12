@@ -11,3 +11,14 @@ interface GetOrdersResponse extends Response {
 
 export const getOrders = async (requestConfig?: GetOrdersConfig) =>
   api.get<GetOrdersResponse>('/delivery/orders', requestConfig);
+
+export interface CancelOrderParams {
+  orderId: string;
+}
+
+type CancelOrderConfig = AxiosRequestConfig<CancelOrderParams>;
+
+type CancelOrderResponse = Response;
+
+export const cancelOrder = async ({ params, config }: CancelOrderConfig) =>
+  api.put<CancelOrderResponse>(`/delivery/orders/cancel`, params, config);

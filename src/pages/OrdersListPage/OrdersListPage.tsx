@@ -20,7 +20,7 @@ const OrdersListPage = () => {
       <Typography variant='typography24_bold'>История</Typography>
       <ul className={cls.orders_list}>
         {getOrdersQuery.data.data.orders.map((order, index) => (
-          <OrdersListItem key={index} order={order} orderNumber={index + 1} />
+          <OrdersListItem key={index} order={order} />
         ))}
       </ul>
     </div>

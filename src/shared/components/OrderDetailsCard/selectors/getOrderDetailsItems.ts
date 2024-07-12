@@ -1,7 +1,6 @@
 import type { Address } from '@appTypes/address.ts';
 import type { User } from '@appTypes/user.ts';
 import type { Section } from '@store/hooks/useCreateOrderStore';
-import { useCreateOrderStore } from '@store/hooks/useCreateOrderStore';
 
 interface OrderDataItem {
   title: string;
@@ -35,13 +34,16 @@ const createAddressBody = (address: Address) => [
   },
   {
     title: 'Заметки',
-    description: address.comment
+    description: address?.comment ?? 'Нет данных'
   }
 ];
 
-export const getOrderDataItems = () => {
-  const { sender, receiver, receiverAddress, senderAddress } = useCreateOrderStore();
-
+export const getOrderDetailsItems = (
+  receiver: User,
+  sender: User,
+  senderAddress: Address,
+  receiverAddress: Address
+) => {
   const users: UserItem[] = [
     { user: receiver, title: 'Получатель', redirectTo: 'receiver', body: createUserBody(receiver) },
     { user: sender, title: 'Отправитель', redirectTo: 'sender', body: createUserBody(sender) }

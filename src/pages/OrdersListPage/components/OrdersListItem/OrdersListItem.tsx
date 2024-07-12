@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import type { Order } from '@appTypes/order.ts';
+import { getRouteOrderDetails } from '@consts/router.ts';
 import {
   orderStatusColors,
   orderStatuses
@@ -12,10 +13,9 @@ import cls from './OrdersListItem.module.scss';
 
 interface OrdersListItemProps {
   order: Order;
-  orderNumber: number;
 }
 
-export const OrdersListItem = ({ order, orderNumber }: OrdersListItemProps) => {
+export const OrdersListItem = ({ order }: OrdersListItemProps) => {
   const navigate = useNavigate();
 
   return (
@@ -24,7 +24,7 @@ export const OrdersListItem = ({ order, orderNumber }: OrdersListItemProps) => {
         <Typography className={cls.param_title} variant='typography12_regular'>
           Номер заказа
         </Typography>
-        <Typography variant='typography16_regular'>{orderNumber}</Typography>
+        <Typography variant='typography16_regular'>{order._id}</Typography>
       </div>
       <div>
         <Typography className={cls.param_title} variant='typography12_regular'>
@@ -52,7 +52,7 @@ export const OrdersListItem = ({ order, orderNumber }: OrdersListItemProps) => {
           {order.option?.type ? order.option.type : 'Не известно'}
         </Typography>
       </div>
-      <Link className={cls.more_link} to='/'>
+      <Link className={cls.more_link} to={getRouteOrderDetails(order._id)}>
         Подробнее
       </Link>
     </Card>
