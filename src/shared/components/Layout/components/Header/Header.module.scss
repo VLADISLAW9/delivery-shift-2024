@@ -18,4 +18,15 @@
     width: 120px;
     cursor: pointer;
   }
+
+  .link, .exit_button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .link_icon, .button_icon {
+    width: 20px;
+    height: 20px;
+  }
 }
