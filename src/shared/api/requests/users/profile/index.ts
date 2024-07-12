@@ -2,11 +2,16 @@ import type { User } from '@appTypes/user';
 
 import { api } from '../../../instance';
 
-type GetProfileConfig = RequestConfig;
+export interface UpdateProfileParams {
+  profile: Omit<User, 'id' | 'phone'>;
+  phone: string;
+}
 
-interface GetProfileResponse extends BaseResponse {
+export type UpdateProfileConfig = RequestConfig<UpdateProfileParams>;
+
+interface UpdateProfileResponse extends BaseResponse {
   user: User;
 }
 
-export const getProfile = async (requestConfig?: GetProfileConfig) =>
-  api.get<GetProfileResponse>('/users/profile', requestConfig);
+export const updateProfile = async ({ params, config }?: UpdateProfileConfig) =>
+  api.patch<UpdateProfileResponse>('/users/profile', params, config);

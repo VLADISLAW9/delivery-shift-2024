@@ -30,4 +30,7 @@ interface QuerySettings<Func = unknown> {
 interface BaseResponse {
   success: boolean;
   reason?: string;
+  message?: string;
+  error?: string;
+  statusCode?: number;
 }
