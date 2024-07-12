@@ -3,7 +3,8 @@ export enum AppRoutes {
   AUTH = 'auth',
   CREATE_ORDER = 'create-order',
   ORDERS = 'orders',
-  ORDER_DETAILS = 'order-details'
+  ORDER_DETAILS = 'order-details',
+  PROFILE = 'profile'
 }
 
 export const getRouteMain = () => '/';
@@ -11,3 +12,4 @@ export const getRouteAuth = () => '/auth';
 export const getRouteCreateOrder = () => '/create-order';
 export const getRouteOrders = () => '/orders';
 export const getRouteOrderDetails = (id: string) => `/orders/${id}`;
+export const getRouteProfile = () => `/profile`;

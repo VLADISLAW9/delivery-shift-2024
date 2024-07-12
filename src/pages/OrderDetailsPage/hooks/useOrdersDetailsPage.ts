@@ -35,11 +35,7 @@ export const useOrdersDetailsPage = () => {
   const onCancelOrder = async () => {
     setError('');
 
-    const cancelOrderResponse = await cancelOrder.mutateAsync({
-      orderId: id
-    });
-
-    console.log(cancelOrderResponse?.data);
+    const cancelOrderResponse = await cancelOrder.mutateAsync({ params: { orderId: id } });
 
     if (!cancelOrderResponse?.data?.success && cancelOrderResponse?.data?.reason) {
       return setError(cancelOrderResponse.data.reason);

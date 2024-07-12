@@ -1,9 +1,8 @@
-import type { Response } from '@appTypes/common';
 import type { Order } from '@appTypes/order.ts';
 
 import { api } from '../../../instance.ts';
 
-type GetOrdersConfig = AxiosRequestConfig;
+type GetOrdersConfig = RequestConfig;
 
 interface GetOrdersResponse extends Response {
   orders: Order[];
@@ -16,9 +15,9 @@ export interface CancelOrderParams {
   orderId: string;
 }
 
-type CancelOrderConfig = AxiosRequestConfig<CancelOrderParams>;
+export type CancelOrderConfig = RequestConfig<CancelOrderParams>;
 
-type CancelOrderResponse = Response;
+type CancelOrderResponse = BaseResponse;
 
 export const cancelOrder = async ({ params, config }: CancelOrderConfig) =>
   api.put<CancelOrderResponse>(`/delivery/orders/cancel`, params, config);

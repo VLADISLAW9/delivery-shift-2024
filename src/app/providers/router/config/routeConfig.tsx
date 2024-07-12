@@ -5,13 +5,15 @@ import {
   getRouteCreateOrder,
   getRouteMain,
   getRouteOrderDetails,
-  getRouteOrders
+  getRouteOrders,
+  getRouteProfile
 } from '@consts/router';
 import { AuthPage } from '@pages/AuthPage';
 import { CreateOrderPage } from '@pages/CreateOrderPage';
 import { MainPage } from '@pages/MainPage';
 import { OrderDetailsPage } from '@pages/OrderDetailsPage';
 import { OrdersListPage } from '@pages/OrdersListPage';
+import { ProfilePage } from '@pages/ProfilePage';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.AUTH]: {
@@ -34,5 +36,9 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.ORDER_DETAILS]: {
     path: getRouteOrderDetails(':id'),
     element: <OrderDetailsPage />
+  },
+  [AppRoutes.PROFILE]: {
+    path: getRouteProfile(),
+    element: <ProfilePage />
   }
 };

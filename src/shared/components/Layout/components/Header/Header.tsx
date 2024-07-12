@@ -1,5 +1,5 @@
 import { AUTH_TOKEN } from '@consts/localstorage.ts';
-import { getRouteAuth, getRouteMain, getRouteOrders } from '@consts/router';
+import { getRouteAuth, getRouteMain, getRouteOrders, getRouteProfile } from '@consts/router';
 import { useUserStore } from '@store/hooks/useUserStore';
 import { AppLogo } from '@ui/AppLogo';
 import { Button } from '@ui/Button';
@@ -33,7 +33,7 @@ export const Header = ({ mobile }: HeaderProps) => {
       {isLoggedIn ? (
         <>
           <div className={cls.navbar}>
-            <Link to='/'>
+            <Link to={getRouteProfile()}>
               <Typography variant='typography16_medium'>Профиль</Typography>
             </Link>
             <Link to={getRouteOrders()}>

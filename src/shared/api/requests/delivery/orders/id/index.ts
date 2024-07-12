@@ -5,11 +5,11 @@ import { api } from '../../../../instance.ts';
 export interface GetOrderParams {
   id: string;
 }
-export type GetOrderConfig = AxiosRequestConfig<GetOrderParams>;
+export type GetOrderConfig = RequestConfig<GetOrderParams>;
 
-interface GetOrderResponse extends Response {
+interface GetOrderResponse extends BaseResponse {
   order: Order;
 }
 
 export const getOrdersId = async ({ params, config }: GetOrderConfig) =>
-  api.get<GetOrderResponse>(`/delivery/orders/${params.id}`, config);
+  api.get<GetOrderResponse>(`/delivery/orders`, params, config);

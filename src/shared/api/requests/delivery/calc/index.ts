@@ -1,4 +1,3 @@
-import type { Response } from '@appTypes/common';
 import type { Options } from '@appTypes/option';
 import type { Package } from '@appTypes/package';
 import type { Point as _Point } from '@appTypes/point';
@@ -13,9 +12,9 @@ export interface CalcDeliveryParams {
   receiverPoint: Point;
 }
 
-export type CalcDeliveryConfig = AxiosRequestConfig<CalcDeliveryParams>;
+export type CalcDeliveryConfig = RequestConfig<CalcDeliveryParams>;
 
-interface CalcDeliveryResponse extends Response {
+interface CalcDeliveryResponse extends BaseResponse {
   options: Options;
 }
 

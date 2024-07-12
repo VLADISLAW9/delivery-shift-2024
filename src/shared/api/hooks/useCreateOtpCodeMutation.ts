@@ -1,10 +1,13 @@
+import type { CreateOtpConfig, CreateOtpParams } from '@api/requests/auth/otp';
+import { createOtp } from '@api/requests/auth/otp';
 import { useMutation } from '@tanstack/react-query';
 
-import type { CreateOtpParams } from '@/shared/api/requests/auth';
-import { createOtp } from '@/shared/api/requests/auth';
-
-export const useCreateOtpMutation = () =>
+export const useCreateOtpMutation = (
+  settings?: MutationSettings<CreateOtpConfig, typeof createOtp>
+) =>
   useMutation({
     mutationKey: ['createOtp'],
-    mutationFn: (params: CreateOtpParams) => createOtp({ params })
+    mutationFn: ({ config, params }: CreateOtpConfig) =>
+      createOtp({ config: { ...settings?.config, ...config }, params }),
+    ...settings?.options
   });

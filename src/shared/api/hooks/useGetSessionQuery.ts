@@ -1,9 +1,9 @@
 import { AUTH_TOKEN } from '@consts/localstorage.ts';
 import { useQuery } from '@tanstack/react-query';
 
-import { getSession } from '@/shared/api/requests';
+import { getSession } from '@/shared/api/requests/users/session';
 
-export const useGetSessionQuery = () =>
+export const useGetSessionQuery = (settings?: QuerySettings<typeof getSession>) =>
   useQuery({
     queryKey: ['getSession'],
     queryFn: () => {
@@ -13,6 +13,7 @@ export const useGetSessionQuery = () =>
         throw new Error('No token');
       }
 
-      return getSession();
-    }
+      return getSession({ config: settings?.config });
+    },
+    ...settings?.options
   });

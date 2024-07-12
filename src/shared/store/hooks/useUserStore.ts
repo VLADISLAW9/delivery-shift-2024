@@ -7,23 +7,17 @@ interface UserState {
 }
 
 interface UserActions {
-  initUser: (user: User) => void;
   setUserData: (user: User) => void;
   clearUser: () => void;
 }
 
 const initialState: UserState = {
-  user: { id: 1 },
+  user: undefined,
   isLoggedIn: false
 };
 
 export const useUserStore = create<UserState & UserActions>((set) => ({
   ...initialState,
-
-  initUser: (user) => {
-    set({ user });
-    set({ isLoggedIn: true });
-  },
 
   setUserData: (newUserData) => {
     set(({ user }) => ({ user: { id: user.id, ...newUserData } }));

@@ -1,11 +1,13 @@
-import type { CancelOrderParams } from '@api/requests/delivery/orders';
+import type { CancelOrderConfig, CancelOrderParams } from '@api/requests/delivery/orders';
 import { cancelOrder } from '@api/requests/delivery/orders';
 import { useMutation } from '@tanstack/react-query';
 
-import { createOtp } from '@/shared/api/requests/auth';
-
-export const useCancelOrderMutation = (settings?: MutationSettings) =>
+export const useCancelOrderMutation = (
+  settings?: MutationSettings<CancelOrderConfig, typeof cancelOrder>
+) =>
   useMutation({
     mutationKey: ['createOtp'],
-    mutationFn: (params: CancelOrderParams) => cancelOrder({ params })
+    mutationFn: ({ params, config }: CancelOrderConfig) =>
+      cancelOrder(params, { config: settings?.config, ...config }),
+    ...settings?.options
   });

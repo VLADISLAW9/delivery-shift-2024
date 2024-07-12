@@ -1,11 +1,10 @@
-import type { Response } from '@appTypes/common';
 import type { Package } from '@appTypes/package';
 
 import { api } from '../../../../instance';
 
-type GetPackagesConfig = AxiosRequestConfig;
+type GetPackagesConfig = RequestConfig;
 
-interface GetPackagesResponse extends Response {
+interface GetPackagesResponse extends BaseResponse {
   packages: Package[];
 }
 

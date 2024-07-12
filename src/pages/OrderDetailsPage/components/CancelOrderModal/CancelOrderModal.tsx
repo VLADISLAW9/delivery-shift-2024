@@ -21,7 +21,7 @@ export const CancelOrderModal = ({
   loading
 }: CancelOrderModalProps) => (
   <Modal className={cls.cancel_modal} open={open} onClose={onCloseModal}>
-    <img className={cls.cancel_image} src={questionImage} />
+    <img alt='question' className={cls.cancel_image} src={questionImage} />
     <Typography tag='h3' variant='typography20_semibold'>
       Отменить доставку?
     </Typography>

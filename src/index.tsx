@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { getSession } from '@api/requests';
+import { getSession } from '@api/requests/users/session';
 import { AUTH_TOKEN } from '@consts/localstorage.ts';
 import { useUserStore } from '@store/hooks/useUserStore.ts';
 
@@ -15,7 +15,7 @@ const init = async () => {
 
   if (token) {
     const getUserResponse = await getSession();
-    useUserStore.setState({ initUser: getUserResponse.data.user });
+    useUserStore.setState({ isLoggedIn: true, user: getUserResponse.data.user });
   }
 
   ReactDOM.createRoot(document.getElementById('root')!).render(

@@ -1,13 +1,11 @@
-import type { Response } from '@appTypes/common';
-
-import { api } from '../../instance.ts';
+import { api } from '../../../instance.ts';
 
 export interface CreateOtpParams {
   phone: string;
 }
-export type CreateOtpConfig = AxiosRequestConfig<CreateOtpParams>;
+export type CreateOtpConfig = RequestConfig<CreateOtpParams>;
 
-interface CreateOtpResponse extends Response {
+interface CreateOtpResponse extends BaseResponse {
   retryDelay: number;
 }
 

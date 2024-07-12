@@ -23,7 +23,8 @@
 .status_create,
 .status_get,
 .status_pending,
-.status_success {
+.status_success,
+.status_cancel{
   &::before {
     content: '';
     display: inline-block;

@@ -31,14 +31,16 @@ export const useCheckOrderSection = () => {
     setError('');
 
     const createOrderResponse = await createOrder.mutateAsync({
-      senderPoint,
-      option,
-      payer,
-      receiverPoint,
-      receiver,
-      senderAddress,
-      receiverAddress,
-      sender
+      params: {
+        senderPoint,
+        option,
+        payer,
+        receiverPoint,
+        receiver,
+        senderAddress,
+        receiverAddress,
+        sender
+      }
     });
 
     if (!createOrderResponse.data.success && createOrderResponse.data.reason) {

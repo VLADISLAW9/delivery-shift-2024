@@ -1,12 +1,9 @@
-import { useState } from 'react';
 import { Controller } from 'react-hook-form';
 import GeoIcon from '@icons/geo.svg';
 import MessageIcon from '@icons/message.svg';
 import PlaneIcon from '@icons/plane.svg';
 import globeImage from '@images/globe.png';
-import { SuccessModal } from '@pages/CreateOrderPage/components/SuccessModal/SuccessModal.tsx';
 import { Button } from '@ui/Button';
-import { Modal } from '@ui/Modal';
 import { Select, SelectItem } from '@ui/Select';
 import { Typography } from '@ui/Typography';
 
