@@ -5,6 +5,7 @@ import PlaneIcon from '@icons/plane.svg';
 import globeImage from '@images/globe.png';
 import { Button } from '@ui/Button';
 import { Select, SelectItem } from '@ui/Select';
+import { ToggleGroup } from '@ui/ToggleGroup';
 import { Typography } from '@ui/Typography';
 
 import { useMainPage } from './hooks/useMainPage';

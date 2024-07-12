@@ -1,4 +1,5 @@
 import type { AddressSectionSchema } from '@pages/CreateOrderPage/consts/addressSectionSchema.ts';
+import type { PayerSectionSchema } from '@pages/CreateOrderPage/consts/payerSectionSchema.ts';
 import type { UserSectionSchema } from '@pages/CreateOrderPage/consts/userSectionSchema.ts';
 import { useCurrentForm } from '@pages/CreateOrderPage/hooks/useCurrentForm.ts';
 import type { Section } from '@store/hooks/useCreateOrderStore';
@@ -10,27 +11,29 @@ export const useSections = (section: Section) => {
 
   const form = useCurrentForm(section);
 
-  const onSubmit = form.handleSubmit((data: UserSectionSchema | AddressSectionSchema) => {
-    if (section === 'sender') {
-      return setSender(data);
-    }
+  const onSubmit = form.handleSubmit(
+    (data: UserSectionSchema | AddressSectionSchema | PayerSectionSchema) => {
+      if (section === 'sender') {
+        return setSender(data);
+      }
 
-    if (section === 'receiver') {
-      return setReceiver(data);
-    }
+      if (section === 'receiver') {
+        return setReceiver(data);
+      }
 
-    if (section === 'senderAddress') {
-      return setSenderAddress(data);
-    }
+      if (section === 'senderAddress') {
+        return setSenderAddress(data);
+      }
 
-    if (section === 'receiverAddress') {
-      return setReceiverAddress(data);
-    }
+      if (section === 'receiverAddress') {
+        return setReceiverAddress(data);
+      }
 
-    if (section === 'payer') {
-      return setPayer(data);
+      if (section === 'payer') {
+        return setPayer(data);
+      }
     }
-  });
+  );
 
   const onComeback = () => {
     if (section === 'sender') {
