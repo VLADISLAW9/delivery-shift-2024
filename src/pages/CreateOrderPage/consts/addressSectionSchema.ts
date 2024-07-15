@@ -8,7 +8,6 @@ export const addressSectionSchema = z.object({
     .string({ required_error: 'Поле обязательно для заполнения' })
     .min(1, { message: 'Поле должно иметь минимум 1 букву' })
     .max(100, { message: 'Поле должно иметь максимум 100 букв' })
-    .regex(alphanumericRegex, { message: 'Поле содержит запрещенные символы' })
     .regex(specialCharRegex, {
       message: 'Поле не должно начинаться или заканчиваться специальными символами'
     }),

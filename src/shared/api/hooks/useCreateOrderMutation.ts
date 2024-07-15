@@ -1,4 +1,4 @@
-import type { CreateOrderConfig, CreateOrderParams } from '@api/requests/delivery/order';
+import type { CreateOrderConfig } from '@api/requests/delivery/order';
 import { createOrder } from '@api/requests/delivery/order';
 import { useMutation } from '@tanstack/react-query';
 

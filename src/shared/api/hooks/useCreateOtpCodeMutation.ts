@@ -1,4 +1,4 @@
-import type { CreateOtpConfig, CreateOtpParams } from '@api/requests/auth/otp';
+import type { CreateOtpConfig } from '@api/requests/auth/otp';
 import { createOtp } from '@api/requests/auth/otp';
 import { useMutation } from '@tanstack/react-query';
 

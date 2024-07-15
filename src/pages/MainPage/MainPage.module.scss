@@ -8,7 +8,7 @@
   left: -100px;
 }
 
-.form_wrapper {
+.form_wrapper, .form_wrapper_loader {
   position: absolute;
   top: 115px;
   right: 0;
@@ -19,6 +19,16 @@
   flex-direction: column;
   gap: 24px;
 }
+
+.form_wrapper_loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 489px;
+  width: 400px;
+}
+
+
 
 .image {
   width: 567px;

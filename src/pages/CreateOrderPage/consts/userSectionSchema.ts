@@ -31,7 +31,8 @@ export const userSectionSchema = z.object({
       message:
         'Поле содержит недопустимые символы или начинается/заканчивается пробелом или запрещенными символами'
     })
-    .nullable(),
+    .nullable()
+    .optional(),
   phone: z
     .string({ required_error: 'Поле обязательно для заполнения' })
     .min(11, { message: 'Номер должен иметь минимум 11 цифр' })

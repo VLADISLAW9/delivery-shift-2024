@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useCancelOrderMutation } from '@api/hooks/useCancelOrderMutation.ts';
 import { useGetOrdersIdQuery } from '@api/hooks/useGetOrdersIdQuery.ts';
@@ -12,7 +12,7 @@ export const useOrderDetailsPage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const getOrdersId = useGetOrdersIdQuery({ id });
+  const getOrdersId = useGetOrdersIdQuery({ config: { params: { id } } });
   const cancelOrder = useCancelOrderMutation({
     options: { onSuccess: () => queryClient.invalidateQueries({ queryKey: ['getOrders'] }) }
   });
@@ -52,12 +52,6 @@ export const useOrderDetailsPage = () => {
   const onCloseOrderDetailsPage = () => {
     navigate(getRouteOrders());
   };
-
-  useEffect(() => {
-    if (getOrdersId.data) {
-      console.log(getOrdersId.data);
-    }
-  }, [getOrdersId.data]);
 
   return {
     state: {

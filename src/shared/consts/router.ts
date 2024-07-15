@@ -4,7 +4,8 @@ export enum AppRoutes {
   CREATE_ORDER = 'create-order',
   ORDERS = 'orders',
   ORDER_DETAILS = 'order-details',
-  PROFILE = 'profile'
+  PROFILE = 'profile',
+  NOT_FOUND = 'not-found'
 }
 
 export const getRouteMain = () => '/';

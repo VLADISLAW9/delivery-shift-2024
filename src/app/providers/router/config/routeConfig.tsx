@@ -43,5 +43,9 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     path: getRouteProfile(),
     element: <ProfilePage />,
     authOnly: true
+  },
+  [AppRoutes.NOT_FOUND]: {
+    path: '*',
+    element: <div>Ничего не найдено</div>
   }
 };

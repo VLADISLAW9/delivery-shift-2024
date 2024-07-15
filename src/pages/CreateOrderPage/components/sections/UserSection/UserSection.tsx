@@ -68,6 +68,7 @@ export const UserSection = ({ section }: UserSectionProps) => {
         render={({ field: { onChange, value, ...otherFieldProps }, fieldState }) => (
           <Input
             {...otherFieldProps}
+            defaultValue={value}
             component={PatternFormat}
             format='+7 ### ### ## ##'
             onChange={(event) => onChange(convertPhoneToString(event.target.value))}

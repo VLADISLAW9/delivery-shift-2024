@@ -4,6 +4,7 @@ import MessageIcon from '@icons/message.svg';
 import PlaneIcon from '@icons/plane.svg';
 import globeImage from '@images/globe.png';
 import { Button } from '@ui/Button';
+import { Loader } from '@ui/Loader';
 import { Select, SelectItem } from '@ui/Select';
 import { ToggleGroup } from '@ui/ToggleGroup';
 import { Typography } from '@ui/Typography';
@@ -25,6 +26,9 @@ const MainPage = () => {
             <br /> удобно, надежно!
           </Typography>
         </div>
+        <form onSubmit={functions.onSubmit} className={cls.form_wrapper_loader}>
+          <Loader />
+        </form>
       </div>
     );
   }

@@ -8,24 +8,24 @@ interface MutationSettings<Params = void, Func = unknown> {
   >;
 }
 
-type ApiRequestConfig = import('axios').AxiosRequestConfig;
-
-type RequestConfig<Params = undefined> = Params extends undefined
-  ? { config?: ApiRequestConfig }
-  : { params: Params; config?: ApiRequestConfig };
-
-interface QuerySettings<Func = unknown> {
-  config?: ApiRequestConfig;
+interface QuerySettings<Params = void> {
+  config?: RequestConfig<Params>;
   options?: Omit<
     import('@tanstack/react-query').UseQueryOptions<
-      Awaited<ReturnType<Func>>,
+      Awaited<ReturnType<Params>>,
       any,
-      Awaited<ReturnType<Func>>,
+      Awaited<ReturnType<Params>>,
       any
     >,
     'queryKey'
   >;
 }
+
+type ApiRequestConfig = import('axios').AxiosRequestConfig;
+
+type RequestConfig<Params = undefined> = Params extends undefined
+  ? { config?: ApiRequestConfig }
+  : { params: Params; config?: ApiRequestConfig };
 
 interface BaseResponse {
   success: boolean;
