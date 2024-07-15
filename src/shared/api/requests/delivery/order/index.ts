@@ -1,5 +1,4 @@
 import type { Address } from '@appTypes/address.ts';
-import type { Response } from '@appTypes/common';
 import type { Options } from '@appTypes/option';
 import type { Order } from '@appTypes/order.ts';
 import type { Point } from '@appTypes/point';
@@ -20,9 +19,9 @@ export interface CreateOrderParams {
   option: Options;
 }
 
-export type CreateOrderConfig = AxiosRequestConfig<CreateOrderParams>;
+export type CreateOrderConfig = RequestConfig<CreateOrderParams>;
 
-interface CreateOrderResponse extends Response {
+interface CreateOrderResponse extends BaseResponse {
   order: Order;
 }
 

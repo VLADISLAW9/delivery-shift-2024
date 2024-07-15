@@ -15,12 +15,12 @@ interface ButtonProps extends ComponentPropsWithRef<'button'> {
   className?: string;
   variant?: ButtonVariant;
   disabled?: boolean;
-  children?: ReactNode;
+  children?: ReactNode | string;
   fullWidth?: boolean;
   loading?: boolean;
 }
 
-export const Button = forwardRef<ButtonProps, ForwardedRef<HTMLButtonElement>>(
+export const Button = forwardRef<ForwardedRef<HTMLButtonElement>, ButtonProps>(
   (
     { className, children, variant = 'primary_filled', disabled, fullWidth, loading, ...props },
     ref
@@ -28,7 +28,7 @@ export const Button = forwardRef<ButtonProps, ForwardedRef<HTMLButtonElement>>(
     return (
       <button
         type='button'
-        className={clsx(cls.button, fullWidth && cls.full_width, className, cls[variant])}
+        className={clsx(cls.button, { [cls.full_width]: fullWidth }, className, cls[variant])}
         disabled={disabled || loading}
         ref={ref}
         {...props}

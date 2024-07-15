@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCreateOrderMutation } from '@api/hooks/useCreateOrderMutation.ts';
+import { getOrderDetailsItems } from '@components/OrderDetailsCard';
+import { getRouteOrders } from '@consts/router.ts';
 import { useCreateOrderStore } from '@store/hooks/useCreateOrderStore';
-
-import { getOrderDataItems } from '../selectors/getOrderDataItems.ts';
 
 export const useCheckOrderSection = () => {
   const navigate = useNavigate();
@@ -26,20 +26,22 @@ export const useCheckOrderSection = () => {
   const [openModal, setOpenModal] = useState(false);
   const [error, setError] = useState('');
 
-  const orderDataItems = getOrderDataItems();
+  const orderDetailsItems = getOrderDetailsItems(receiver, sender, senderAddress, receiverAddress);
 
   const onSubmitOrderData = async () => {
     setError('');
 
     const createOrderResponse = await createOrder.mutateAsync({
-      senderPoint,
-      option,
-      payer,
-      receiverPoint,
-      receiver,
-      senderAddress,
-      receiverAddress,
-      sender
+      params: {
+        senderPoint,
+        option,
+        payer: payer?.payer,
+        receiverPoint,
+        receiver,
+        senderAddress,
+        receiverAddress,
+        sender
+      }
     });
 
     if (!createOrderResponse.data.success && createOrderResponse.data.reason) {
@@ -51,7 +53,7 @@ export const useCheckOrderSection = () => {
 
   const onCloseModal = () => {
     setOpenModal(false);
-    navigate('/');
+    navigate(getRouteOrders());
     clearOrderStore();
   };
 
@@ -61,7 +63,7 @@ export const useCheckOrderSection = () => {
 
   return {
     state: {
-      orderDataItems,
+      orderDetailsItems,
       option,
       loading: createOrder.isPending,
       error,

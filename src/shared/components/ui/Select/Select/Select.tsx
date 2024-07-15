@@ -13,7 +13,7 @@ interface SelectProps extends SelectPrimitive.SelectProps {
   error?: InputError;
 }
 
-export const Select = forwardRef<SelectProps, HTMLButtonElement>(
+export const Select = forwardRef<HTMLButtonElement, SelectProps>(
   ({ children, label, Icon, error, ...props }, ref) => (
     <div className={clsx(cls.select_wrapper, { [cls.select_wrapper_error]: error?.error })}>
       {label && <p className={cls.label}>{label}</p>}

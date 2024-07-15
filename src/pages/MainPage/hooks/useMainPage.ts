@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { useGetPackagesQuery, useGetPointsQuery } from '@api/hooks';
-import { useCalcDeliveryMutation } from '@api/hooks/useCalcDeliveryMutation.ts';
+import { useCalcDeliveryMutation } from '@api/hooks/useCalcDeliveryMutation';
+import { useGetPackagesQuery } from '@api/hooks/useGetPackagesQuery';
+import { useGetPointsQuery } from '@api/hooks/useGetPointsQuery';
 import { getRouteCreateOrder } from '@consts/router.ts';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useCitiesStore } from '@store/hooks/useCitiesStore.ts';
 import { useCreateOrderStore } from '@store/hooks/useCreateOrderStore';
 
-import type { CalcDeliverySchema } from '../consts/calcDeliverySchema.ts';
-import { calcDeliverySchema } from '../consts/calcDeliverySchema.ts';
+import type { CalcDeliverySchema } from '../consts/calcDeliverySchema';
+import { calcDeliverySchema } from '../consts/calcDeliverySchema';
 
 export const useMainPage = () => {
   const navigate = useNavigate();
@@ -18,6 +20,7 @@ export const useMainPage = () => {
   const calcDelivery = useCalcDeliveryMutation();
 
   const { setOptions, setSenderPoint, setReceiverPoint } = useCreateOrderStore();
+  const { cities, setCities } = useCitiesStore();
 
   const [error, setError] = useState('');
 
@@ -42,7 +45,7 @@ export const useMainPage = () => {
       package: packages.find((p) => p.id === data.package)
     };
 
-    const calcDeliveryResponse = await calcDelivery.mutateAsync(params);
+    const calcDeliveryResponse = await calcDelivery.mutateAsync({ params });
 
     if (!calcDeliveryResponse.data.success && calcDeliveryResponse.data.reason) {
       setError(calcDeliveryResponse.data.reason);
@@ -54,6 +57,12 @@ export const useMainPage = () => {
 
     navigate(getRouteCreateOrder());
   });
+
+  useEffect(() => {
+    if (getPointsQuery.data && !cities?.length) {
+      setCities(getPointsQuery.data.data.points);
+    }
+  }, [getPointsQuery.data]);
 
   return {
     state: {

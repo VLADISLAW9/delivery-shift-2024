@@ -1,0 +1,60 @@
+.orders_list_item {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.more_link {
+  font: var(--font-14-regular);
+  color: var(--text-quartenery-color);
+  text-decoration: underline;
+}
+
+.status_wrapper {
+  display: flex;
+  align-items: center;
+
+}
+
+.param_title {
+  color: var(--text-tertiary-color);
+}
+
+.status_create,
+.status_get,
+.status_pending,
+.status_success,
+.status_cancel{
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+}
+
+.status_create, .status_get {
+  &::before {
+    background-color: var(--bg-brand);
+  }
+}
+
+.status_cancel {
+  &::before {
+    background-color: var(--indicator-error-color);
+  }
+}
+
+.status_pending {
+  &::before {
+    background-color: var(--indicator-attention-color);
+  }
+}
+
+.status_success {
+  &::before {
+    background-color: var( --indicator-positive-color);
+  }
+}

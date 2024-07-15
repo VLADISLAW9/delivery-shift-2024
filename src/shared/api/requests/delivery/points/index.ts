@@ -1,11 +1,10 @@
-import type { Response } from '@appTypes/common';
 import type { Point } from '@appTypes/point';
 
 import { api } from '../../../instance';
 
-type GetPointsConfig = AxiosRequestConfig;
+type GetPointsConfig = RequestConfig;
 
-interface GetPointsResponse extends Response {
+interface GetPointsResponse extends BaseResponse {
   points: Point[];
 }
 

@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { useCreateOtpMutation } from '@api/hooks/useCreateOtpCodeMutation.ts';
+import { useSignInMutation } from '@api/hooks/useSignInMutation.ts';
 import { AUTH_TOKEN } from '@consts/localstorage';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useUserStore } from '@store/hooks/useUserStore.ts';
-
-import { useCreateOtpMutation, useSignInMutation } from '@/shared/api/hooks';
 
 import type { OtpCodeSchema } from '../consts/otpCodeSchema';
 import { otpCodeSchema } from '../consts/otpCodeSchema';
@@ -34,7 +34,7 @@ export const useAuthPage = () => {
 
   const handleCreateOtp = async (data?: PhoneSchema) => {
     const phone = data?.phone || currentPhone;
-    const createOtpCodeResponse = await createOtpMutation.mutateAsync({ phone });
+    const createOtpCodeResponse = await createOtpMutation.mutateAsync({ params: { phone } });
 
     setSubmittedPhones({
       ...submittedPhones,
@@ -46,8 +46,10 @@ export const useAuthPage = () => {
 
   const handleSignIn = async (data: OtpCodeSchema) => {
     const signInResponse = await signInMutation.mutateAsync({
-      phone: currentPhone,
-      code: data.otpCode
+      params: {
+        phone: currentPhone,
+        code: data.otpCode
+      }
     });
 
     if (!signInResponse.data.success && signInResponse.data.reason) {

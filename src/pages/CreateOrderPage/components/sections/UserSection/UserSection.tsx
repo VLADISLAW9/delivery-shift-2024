@@ -51,8 +51,15 @@ export const UserSection = ({ section }: UserSectionProps) => {
       <Controller
         name='middlename'
         control={form.control}
-        render={({ field }) => (
-          <Input {...field} label='Отчетство' placeholder='Отчетство (при наличии)' />
+        render={({ field, fieldState }) => (
+          <Input
+            {...field}
+            label='Отчетство'
+            placeholder='Отчетство (при наличии)'
+            {...(fieldState.error && {
+              error: { error: true, message: fieldState.error.message }
+            })}
+          />
         )}
       />
       <Controller
@@ -61,6 +68,7 @@ export const UserSection = ({ section }: UserSectionProps) => {
         render={({ field: { onChange, value, ...otherFieldProps }, fieldState }) => (
           <Input
             {...otherFieldProps}
+            defaultValue={value}
             component={PatternFormat}
             format='+7 ### ### ## ##'
             onChange={(event) => onChange(convertPhoneToString(event.target.value))}

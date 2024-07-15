@@ -1,13 +1,12 @@
-import { useState } from 'react';
 import { Controller } from 'react-hook-form';
 import GeoIcon from '@icons/geo.svg';
 import MessageIcon from '@icons/message.svg';
 import PlaneIcon from '@icons/plane.svg';
 import globeImage from '@images/globe.png';
-import { SuccessModal } from '@pages/CreateOrderPage/components/SuccessModal/SuccessModal.tsx';
 import { Button } from '@ui/Button';
-import { Modal } from '@ui/Modal';
+import { Loader } from '@ui/Loader';
 import { Select, SelectItem } from '@ui/Select';
+import { ToggleGroup } from '@ui/ToggleGroup';
 import { Typography } from '@ui/Typography';
 
 import { useMainPage } from './hooks/useMainPage';
@@ -27,6 +26,9 @@ const MainPage = () => {
             <br /> удобно, надежно!
           </Typography>
         </div>
+        <form onSubmit={functions.onSubmit} className={cls.form_wrapper_loader}>
+          <Loader />
+        </form>
       </div>
     );
   }

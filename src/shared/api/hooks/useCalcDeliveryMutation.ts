@@ -1,9 +1,13 @@
-import type { CalcDeliveryParams } from '@api/requests/delivery/calc';
+import type { CalcDeliveryConfig } from '@api/requests/delivery/calc';
 import { calcDelivery } from '@api/requests/delivery/calc';
 import { useMutation } from '@tanstack/react-query';
 
-export const useCalcDeliveryMutation = () =>
+export const useCalcDeliveryMutation = (
+  settings?: MutationSettings<CalcDeliveryConfig, typeof calcDelivery>
+) =>
   useMutation({
     mutationKey: ['calcDelivery'],
-    mutationFn: (params: CalcDeliveryParams) => calcDelivery({ params })
+    mutationFn: ({ params, config }: CalcDeliveryConfig) =>
+      calcDelivery({ params, config: { ...settings?.config, ...config } }),
+    ...settings?.options
   });

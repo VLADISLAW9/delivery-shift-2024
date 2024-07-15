@@ -1,0 +1,23 @@
+.cancel_modal {
+  text-align: center;
+}
+
+.cancel_image {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 28px;
+}
+
+.cancel_button,
+.no_cancel_button {
+  width: 328px;
+}
+
+.cancel_button {
+  margin-top: 28px;
+  margin-bottom: 16px;
+}
+
+.error_message {
+  color: var(--indicator-error-color)
+}

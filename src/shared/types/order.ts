@@ -6,6 +6,7 @@ import type { User as _User } from '@appTypes/user';
 type User = Omit<_User, 'id' | 'email' | 'city'>;
 
 export interface Order {
+  _id: string;
   senderPoint: Point;
   senderAddress: Address;
   sender: User;

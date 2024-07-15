@@ -4,5 +4,14 @@
 }
 
 .content {
-    padding: 24px 240px;
+  position: relative;
+  padding: 24px 240px;
+  min-height: 90.8vh;
 }
+
+.main_page {
+    background-image: url('@images/main-page-bg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

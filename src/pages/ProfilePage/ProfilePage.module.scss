@@ -1,0 +1,21 @@
+.profile_page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.error_message {
+  color: var(--indicator-error-color);
+}
+
+.update_profile_form {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: auto auto ;
+  grid-template-rows: auto auto auto;
+}
+
+.update_button {
+  width: 328px;
+  margin-top: 20px;
+}

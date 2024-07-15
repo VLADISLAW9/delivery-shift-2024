@@ -10,8 +10,7 @@ import { UserSection } from './components/sections/UserSection';
 const CreateOrderPage = () => {
   const location = useLocation();
 
-  const { options, senderPoint, payer, receiverPoint, section, sender, receiver } =
-    useCreateOrderStore();
+  const { options, senderPoint, payer, receiverPoint, section } = useCreateOrderStore();
 
   if (!options || !senderPoint || !receiverPoint || !section) {
     return <Navigate to='/' state={{ from: location }} replace />;

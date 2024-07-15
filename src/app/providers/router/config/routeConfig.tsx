@@ -3,13 +3,17 @@ import {
   AppRoutes,
   getRouteAuth,
   getRouteCreateOrder,
-  getRouteHistoryOrders,
-  getRouteMain
+  getRouteMain,
+  getRouteOrderDetails,
+  getRouteOrders,
+  getRouteProfile
 } from '@consts/router';
 import { AuthPage } from '@pages/AuthPage';
 import { CreateOrderPage } from '@pages/CreateOrderPage';
-import { HistoryOrdersPage } from '@pages/HistoryOrdersPage';
 import { MainPage } from '@pages/MainPage';
+import { OrderDetailsPage } from '@pages/OrderDetailsPage';
+import { OrdersListPage } from '@pages/OrdersListPage';
+import { ProfilePage } from '@pages/ProfilePage';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.AUTH]: {
@@ -25,9 +29,23 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     element: <CreateOrderPage />,
     authOnly: true
   },
-  [AppRoutes.HISTORY_ORDERS]: {
-    path: getRouteHistoryOrders(),
-    element: <HistoryOrdersPage />,
+  [AppRoutes.ORDERS]: {
+    path: getRouteOrders(),
+    element: <OrdersListPage />,
     authOnly: true
+  },
+  [AppRoutes.ORDER_DETAILS]: {
+    path: getRouteOrderDetails(':id'),
+    element: <OrderDetailsPage />,
+    authOnly: true
+  },
+  [AppRoutes.PROFILE]: {
+    path: getRouteProfile(),
+    element: <ProfilePage />,
+    authOnly: true
+  },
+  [AppRoutes.NOT_FOUND]: {
+    path: '*',
+    element: <div>Ничего не найдено</div>
   }
 };

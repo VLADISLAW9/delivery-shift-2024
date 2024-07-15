@@ -16,7 +16,7 @@ export const SuccessModal = ({ onClose, open }: SuccessModalProps) => {
 
   return (
     <Modal className={cls.success_modal} open={open} onClose={onClose}>
-      <img className={cls.success_image} src={successImage} />
+      <img alt='success' className={cls.success_image} src={successImage} />
       <Typography tag='h3' variant='typography20_semibold'>
         Заявка отправлена
       </Typography>
